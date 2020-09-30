@@ -21,7 +21,7 @@
 #include "ltdc.h"
 
 /* USER CODE BEGIN 0 */
-
+#define GFXMMU_VIRTUAL_BUFFER0_BASE 0
 /* USER CODE END 0 */
 
 LTDC_HandleTypeDef hltdc;
@@ -30,7 +30,6 @@ LTDC_HandleTypeDef hltdc;
 void MX_LTDC_Init(void)
 {
   LTDC_LayerCfgTypeDef pLayerCfg = {0};
-  LTDC_LayerCfgTypeDef pLayerCfg1 = {0};
 
   hltdc.Instance = LTDC;
   hltdc.Init.HSPolarity = LTDC_HSPOLARITY_AL;
@@ -52,6 +51,7 @@ void MX_LTDC_Init(void)
   {
     Error_Handler();
   }
+
   pLayerCfg.WindowX0 = 0;
   pLayerCfg.WindowX1 = 800;
   pLayerCfg.WindowY0 = 0;
@@ -71,25 +71,6 @@ void MX_LTDC_Init(void)
   {
     Error_Handler();
   }
-  pLayerCfg1.WindowX0 = 0;
-  pLayerCfg1.WindowX1 = 0;
-  pLayerCfg1.WindowY0 = 0;
-  pLayerCfg1.WindowY1 = 0;
-  pLayerCfg1.Alpha = 0;
-  pLayerCfg1.Alpha0 = 0;
-  pLayerCfg1.BlendingFactor1 = LTDC_BLENDING_FACTOR1_CA;
-  pLayerCfg1.BlendingFactor2 = LTDC_BLENDING_FACTOR2_CA;
-  pLayerCfg1.FBStartAdress = GFXMMU_VIRTUAL_BUFFER0_BASE;
-  pLayerCfg1.ImageWidth = 0;
-  pLayerCfg1.ImageHeight = 0;
-  pLayerCfg1.Backcolor.Blue = 0;
-  pLayerCfg1.Backcolor.Green = 0;
-  pLayerCfg1.Backcolor.Red = 0;
-  if (HAL_LTDC_ConfigLayer(&hltdc, &pLayerCfg1, 1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
 }
 
 void HAL_LTDC_MspInit(LTDC_HandleTypeDef* ltdcHandle)
