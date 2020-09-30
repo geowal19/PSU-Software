@@ -1,13 +1,13 @@
 /* ----------------------------------------------------------------------
-* Project:      CMSIS DSP Library
-* Title:        arm_mat_init_q15.c
-* Description:  Q15 matrix initialization
-*
-* $Date:        27. January 2017
-* $Revision:    V.1.5.1
-*
-* Target Processor: Cortex-M cores
-* -------------------------------------------------------------------- */
+ * Project:      CMSIS DSP Library
+ * Title:        arm_mat_init_q15.c
+ * Description:  Q15 matrix initialization
+ *
+ * $Date:        27. January 2017
+ * $Revision:    V.1.5.1
+ *
+ * Target Processor: Cortex-M cores
+ * -------------------------------------------------------------------- */
 /*
  * Copyright (C) 2010-2017 ARM Limited or its affiliates. All rights reserved.
  *
@@ -37,29 +37,29 @@
  * @{
  */
 
-/**
- * @brief  Q15 matrix initialization.
- * @param[in,out] *S             points to an instance of the floating-point matrix structure.
- * @param[in]     nRows          number of rows in the matrix.
- * @param[in]     nColumns       number of columns in the matrix.
- * @param[in]     *pData	   points to the matrix data array.
- * @return        none
- */
+  /**
+   * @brief  Q15 matrix initialization.
+   * @param[in,out] *S             points to an instance of the floating-point matrix structure.
+   * @param[in]     nRows          number of rows in the matrix.
+   * @param[in]     nColumns       number of columns in the matrix.
+   * @param[in]     *pData	   points to the matrix data array.
+   * @return        none
+   */
 
 void arm_mat_init_q15(
-	arm_matrix_instance_q15 * S,
-	uint16_t nRows,
-	uint16_t nColumns,
-	q15_t * pData)
+  arm_matrix_instance_q15 * S,
+  uint16_t nRows,
+  uint16_t nColumns,
+  q15_t * pData)
 {
-	/* Assign Number of Rows */
-	S->numRows = nRows;
+  /* Assign Number of Rows */
+  S->numRows = nRows;
 
-	/* Assign Number of Columns */
-	S->numCols = nColumns;
+  /* Assign Number of Columns */
+  S->numCols = nColumns;
 
-	/* Assign Data pointer */
-	S->pData = pData;
+  /* Assign Data pointer */
+  S->pData = pData;
 }
 
 /**

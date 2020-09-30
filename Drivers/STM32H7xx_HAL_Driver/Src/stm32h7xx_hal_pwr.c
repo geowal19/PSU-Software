@@ -1,18 +1,18 @@
 /**
- ******************************************************************************
- * @file    stm32h7xx_hal_pwr.c
- * @author  MCD Application Team
- * @brief   PWR HAL module driver.
- *          This file provides firmware functions to manage the following
- *          functionalities of the Power Controller (PWR) peripheral:
- *           + Initialization and de-initialization functions.
- *           + Peripheral Control functions.
- *           + Interrupt Handling functions.
-   @verbatim
-   ==============================================================================
- ##### PWR peripheral overview #####
-   ==============================================================================
-   [..]
+  ******************************************************************************
+  * @file    stm32h7xx_hal_pwr.c
+  * @author  MCD Application Team
+  * @brief   PWR HAL module driver.
+  *          This file provides firmware functions to manage the following
+  *          functionalities of the Power Controller (PWR) peripheral:
+  *           + Initialization and de-initialization functions.
+  *           + Peripheral Control functions.
+  *           + Interrupt Handling functions.
+  @verbatim
+  ==============================================================================
+                        ##### PWR peripheral overview #####
+  ==============================================================================
+  [..]
    (#) The Power control (PWR) provides an overview of the supply architecture
        for the different power domains and of the supply configuration
        controller.
@@ -26,7 +26,7 @@
           peripherals. The D2 domain contains peripherals and a CPU
           (Cortex-M4). The D3 domain contains the system control, I/O logic
           and low-power peripherals.
-      (+) STM32H72x, STM32H73x, STM32H742, STM32H743, STM32H750 and STM32H753
+      (+) STM32H72x, STM32H73x, STM32H742, STM32H743, STM32H750 and STM32H753 
           devices have 3 power domains (D1, D2 and D3).
           The domain D1 contains a CPU (Cortex-M7), a Flash memory and some
           peripherals. The D2 domain contains peripherals. The D3 domains
@@ -55,10 +55,10 @@
       (+) STOP.
       (+) STANDBY.
 
-   ==============================================================================
- ##### How to use this driver #####
-   ==============================================================================
-   [..]
+  ==============================================================================
+                        ##### How to use this driver #####
+  ==============================================================================
+  [..]
    (#) Power management peripheral is active by default at startup level in
        STM32h7xx lines.
 
@@ -118,7 +118,7 @@
    (#) Call HAL_PWR_PVD_IRQHandler() function to handle the PWR PVD interrupt
        request.
 
- *** PWR HAL driver macros list ***
+     *** PWR HAL driver macros list ***
      =============================================
      [..]
        Below the list of most used macros in PWR HAL driver.
@@ -128,32 +128,32 @@
       (+) __HAL_PWR_GET_FLAG()              : Get the PWR pending flags.
       (+) __HAL_PWR_CLEAR_FLAG()            : Clear the PWR pending flags.
 
-   @endverbatim
- ******************************************************************************
- * @attention
- *
- * <h2><center>&copy; COPYRIGHT(c) 2017 STMicroelectronics.
- * All rights reserved.</center></h2>
- *
- * This software component is licensed by ST under BSD 3-Clause license,
- * the "License"; You may not use this file except in compliance with the
- * License. You may obtain a copy of the License at:
- *                        opensource.org/licenses/BSD-3-Clause
- *
- ******************************************************************************
- */
+  @endverbatim
+  ******************************************************************************
+  * @attention
+  *
+  * <h2><center>&copy; COPYRIGHT(c) 2017 STMicroelectronics.
+  * All rights reserved.</center></h2>
+  *
+  * This software component is licensed by ST under BSD 3-Clause license,
+  * the "License"; You may not use this file except in compliance with the
+  * License. You may obtain a copy of the License at:
+  *                        opensource.org/licenses/BSD-3-Clause
+  *
+  ******************************************************************************
+  */
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32h7xx_hal.h"
 
 /** @addtogroup STM32H7xx_HAL_Driver
- * @{
- */
+  * @{
+  */
 
 /** @defgroup PWR PWR
- * @brief PWR HAL module driver
- * @{
- */
+  * @brief PWR HAL module driver
+  * @{
+  */
 
 #ifdef HAL_PWR_MODULE_ENABLED
 
@@ -161,12 +161,12 @@
 /* Private define ------------------------------------------------------------*/
 
 /** @addtogroup PWR_Private_Constants PWR Private Constants
- * @{
- */
+  * @{
+  */
 
 /** @defgroup PWR_PVD_Mode_Mask PWR PVD Mode Mask
- * @{
- */
+  * @{
+  */
 #if !defined (DUAL_CORE)
 #define PVD_MODE_IT              (0x00010000U)
 #define PVD_MODE_EVT             (0x00020000U)
@@ -176,12 +176,12 @@
 #define PVD_FALLING_EDGE         (0x00000002U)
 #define PVD_RISING_FALLING_EDGE  (0x00000003U)
 /**
- * @}
- */
+  * @}
+  */
 
 /**
- * @}
- */
+  * @}
+  */
 
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
@@ -189,16 +189,16 @@
 /* Private functions ---------------------------------------------------------*/
 
 /** @defgroup PWR_Exported_Functions PWR Exported Functions
- * @{
- */
+  * @{
+  */
 
 /** @defgroup PWR_Exported_Functions_Group1 Initialization and De-Initialization Functions
- * @brief    Initialization and De-Initialization functions
- *
-   @verbatim
-   ===============================================================================
- ##### Initialization and De-Initialization Functions #####
-   ===============================================================================
+  * @brief    Initialization and De-Initialization functions
+  *
+@verbatim
+ ===============================================================================
+              ##### Initialization and De-Initialization Functions #####
+ ===============================================================================
     [..]
       This section provides functions allowing to deinitialize power peripheral.
 
@@ -211,62 +211,62 @@
       The HAL_PWR_DisableBkUpAccess() function disables the access to the backup
       domain.
 
-   @endverbatim
- * @{
- */
+@endverbatim
+  * @{
+  */
 
 /**
- * @brief  Deinitialize the HAL PWR peripheral registers to their default reset
- *         values.
- * @note   This functionality is not available in this product.
- *         The prototype is kept just to maintain compatibility with other
- *         products.
- * @retval None.
- */
+  * @brief  Deinitialize the HAL PWR peripheral registers to their default reset
+  *         values.
+  * @note   This functionality is not available in this product.
+  *         The prototype is kept just to maintain compatibility with other
+  *         products.
+  * @retval None.
+  */
 void HAL_PWR_DeInit (void)
 {
 }
 
 /**
- * @brief  Enable access to the backup domain (RTC registers, RTC backup data
- *         registers and backup SRAM).
- * @note   If the HSE divided by 2, 3, ..31 is used as the RTC clock, the
- *         Backup Domain Access should be kept enabled.
- * @retval None.
- */
+  * @brief  Enable access to the backup domain (RTC registers, RTC backup data
+  *         registers and backup SRAM).
+  * @note   If the HSE divided by 2, 3, ..31 is used as the RTC clock, the
+  *         Backup Domain Access should be kept enabled.
+  * @retval None.
+  */
 void HAL_PWR_EnableBkUpAccess (void)
 {
-	/* Enable access to RTC and backup registers */
-	SET_BIT (PWR->CR1, PWR_CR1_DBP);
+  /* Enable access to RTC and backup registers */
+  SET_BIT (PWR->CR1, PWR_CR1_DBP);
 }
 
 /**
- * @brief  Disable access to the backup domain (RTC registers, RTC backup data
- *         registers and backup SRAM).
- * @note   If the HSE divided by 2, 3, ..31 is used as the RTC clock, the
- *         Backup Domain Access should be kept enabled.
- * @retval None.
- */
+  * @brief  Disable access to the backup domain (RTC registers, RTC backup data
+  *         registers and backup SRAM).
+  * @note   If the HSE divided by 2, 3, ..31 is used as the RTC clock, the
+  *         Backup Domain Access should be kept enabled.
+  * @retval None.
+  */
 void HAL_PWR_DisableBkUpAccess (void)
 {
-	/* Disable access to RTC and backup registers */
-	CLEAR_BIT (PWR->CR1, PWR_CR1_DBP);
+  /* Disable access to RTC and backup registers */
+  CLEAR_BIT (PWR->CR1, PWR_CR1_DBP);
 }
 /**
- * @}
- */
+  * @}
+  */
 
 /** @defgroup PWR_Exported_Functions_Group2 Peripheral Control Functions
- *  @brief   Power Control functions
- *
-   @verbatim
-   ===============================================================================
- ##### Peripheral Control Functions #####
-   ===============================================================================
+  *  @brief   Power Control functions
+  *
+@verbatim
+ ===============================================================================
+                 ##### Peripheral Control Functions #####
+ ===============================================================================
     [..]
       This section provides functions allowing to control power peripheral.
 
- *** PVD configuration ***
+    *** PVD configuration ***
     =========================
     [..]
       (+) The PVD is used to monitor the VDD power supply by comparing it to a
@@ -280,7 +280,7 @@ void HAL_PWR_DisableBkUpAccess (void)
 
       (+) The PVD is stopped in STANDBY mode.
 
- *** Wake-up pin configuration ***
+    *** Wake-up pin configuration ***
     =================================
     [..]
       (+) Wake-up pin is used to wake up the system from STANDBY mode.
@@ -291,7 +291,7 @@ void HAL_PWR_DisableBkUpAccess (void)
 
       (+) There are up to six Wake-up pin in the STM32H7 devices family.
 
- *** Low Power modes configuration ***
+    *** Low Power modes configuration ***
     =====================================
     [..]
      The device present 3 principles low-power modes features:
@@ -305,7 +305,7 @@ void HAL_PWR_DisableBkUpAccess (void)
       (+) STANDBY mode : All PWR domains enter DSTANDBY mode and the VCORE
                          supply regulator is powered off.
 
- *** SLEEP mode ***
+   *** SLEEP mode ***
    ==================
     [..]
       (+) Entry:
@@ -323,7 +323,7 @@ void HAL_PWR_DisableBkUpAccess (void)
         Any peripheral interrupt acknowledged by the nested vectored interrupt
         controller (NVIC) can wake up the device from SLEEP mode.
 
- *** STOP mode ***
+   *** STOP mode ***
    =================
     [..]
       In system STOP mode, all clocks in the 1.2V domain are stopped, the PLL,
@@ -350,7 +350,7 @@ void HAL_PWR_DisableBkUpAccess (void)
       (+) Exit:
          Any EXTI Line (Internal or External) configured in Interrupt/Event mode.
 
- *** STANDBY mode ***
+   *** STANDBY mode ***
    ====================
     [..]
     (+)
@@ -373,7 +373,7 @@ void HAL_PWR_DisableBkUpAccess (void)
               RTC wakeup, tamper event, time stamp event, external reset in NRST
               pin, IWDG reset.
 
- *** Auto-wakeup (AWU) from low-power mode ***
+   *** Auto-wakeup (AWU) from low-power mode ***
    =============================================
     [..]
      (+) The MCU can be woken up from low-power mode by an RTC Alarm event, an
@@ -395,481 +395,481 @@ void HAL_PWR_DisableBkUpAccess (void)
             necessary to configure the RTC to generate the RTC WakeUp event
             using the HAL_RTCEx_SetWakeUpTimer_IT() function.
 
-   @endverbatim
- * @{
- */
+@endverbatim
+  * @{
+  */
 
 /**
- * @brief  Configure the event mode and the voltage threshold detected by the
- *         Programmable Voltage Detector(PVD).
- * @param  sConfigPVD : Pointer to an PWR_PVDTypeDef structure that contains
- *                      the configuration information for the PVD.
- * @note   Refer to the electrical characteristics of your device datasheet for
- *         more details about the voltage threshold corresponding to each
- *         detection level.
- * @note   For dual core devices, please ensure to configure the EXTI lines for
- *         the different Cortex-Mx through PWR_Exported_Macro provided by this
- *         driver. All combination are allowed: wake up only Cortex-M7, wake up
- *         only Cortex-M4 or wake up Cortex-M7 and Cortex-M4.
- * @retval None.
- */
+  * @brief  Configure the event mode and the voltage threshold detected by the
+  *         Programmable Voltage Detector(PVD).
+  * @param  sConfigPVD : Pointer to an PWR_PVDTypeDef structure that contains
+  *                      the configuration information for the PVD.
+  * @note   Refer to the electrical characteristics of your device datasheet for
+  *         more details about the voltage threshold corresponding to each
+  *         detection level.
+  * @note   For dual core devices, please ensure to configure the EXTI lines for
+  *         the different Cortex-Mx through PWR_Exported_Macro provided by this
+  *         driver. All combination are allowed: wake up only Cortex-M7, wake up
+  *         only Cortex-M4 or wake up Cortex-M7 and Cortex-M4.
+  * @retval None.
+  */
 void HAL_PWR_ConfigPVD (PWR_PVDTypeDef *sConfigPVD)
 {
-	/* Check the PVD configuration parameter */
-	if (sConfigPVD == NULL)
-	{
-		return;
-	}
+  /* Check the PVD configuration parameter */
+  if (sConfigPVD == NULL)
+  {
+    return;
+  }
 
-	/* Check the parameters */
-	assert_param (IS_PWR_PVD_LEVEL (sConfigPVD->PVDLevel));
-	assert_param (IS_PWR_PVD_MODE (sConfigPVD->Mode));
+  /* Check the parameters */
+  assert_param (IS_PWR_PVD_LEVEL (sConfigPVD->PVDLevel));
+  assert_param (IS_PWR_PVD_MODE (sConfigPVD->Mode));
 
-	/* Set PLS[7:5] bits according to PVDLevel value */
-	MODIFY_REG (PWR->CR1, PWR_CR1_PLS, sConfigPVD->PVDLevel);
+  /* Set PLS[7:5] bits according to PVDLevel value */
+  MODIFY_REG (PWR->CR1, PWR_CR1_PLS, sConfigPVD->PVDLevel);
 
-	/* Clear previous config */
+  /* Clear previous config */
 #if !defined (DUAL_CORE)
-	__HAL_PWR_PVD_EXTI_DISABLE_EVENT ();
-	__HAL_PWR_PVD_EXTI_DISABLE_IT ();
+  __HAL_PWR_PVD_EXTI_DISABLE_EVENT ();
+  __HAL_PWR_PVD_EXTI_DISABLE_IT ();
 #endif /* !defined (DUAL_CORE) */
 
-	__HAL_PWR_PVD_EXTI_DISABLE_RISING_EDGE ();
-	__HAL_PWR_PVD_EXTI_DISABLE_FALLING_EDGE ();
+  __HAL_PWR_PVD_EXTI_DISABLE_RISING_EDGE ();
+  __HAL_PWR_PVD_EXTI_DISABLE_FALLING_EDGE ();
 
 #if !defined (DUAL_CORE)
-	/* Interrupt mode configuration */
-	if ((sConfigPVD->Mode & PVD_MODE_IT) == PVD_MODE_IT)
-	{
-		__HAL_PWR_PVD_EXTI_ENABLE_IT ();
-	}
+  /* Interrupt mode configuration */
+  if ((sConfigPVD->Mode & PVD_MODE_IT) == PVD_MODE_IT)
+  {
+    __HAL_PWR_PVD_EXTI_ENABLE_IT ();
+  }
 
-	/* Event mode configuration */
-	if ((sConfigPVD->Mode & PVD_MODE_EVT) == PVD_MODE_EVT)
-	{
-		__HAL_PWR_PVD_EXTI_ENABLE_EVENT ();
-	}
+  /* Event mode configuration */
+  if ((sConfigPVD->Mode & PVD_MODE_EVT) == PVD_MODE_EVT)
+  {
+    __HAL_PWR_PVD_EXTI_ENABLE_EVENT ();
+  }
 #endif /* !defined (DUAL_CORE) */
 
-	/* Rising edge configuration */
-	if ((sConfigPVD->Mode & PVD_RISING_EDGE) == PVD_RISING_EDGE)
-	{
-		__HAL_PWR_PVD_EXTI_ENABLE_RISING_EDGE ();
-	}
+  /* Rising edge configuration */
+  if ((sConfigPVD->Mode & PVD_RISING_EDGE) == PVD_RISING_EDGE)
+  {
+    __HAL_PWR_PVD_EXTI_ENABLE_RISING_EDGE ();
+  }
 
-	/* Falling edge configuration */
-	if ((sConfigPVD->Mode & PVD_FALLING_EDGE) == PVD_FALLING_EDGE)
-	{
-		__HAL_PWR_PVD_EXTI_ENABLE_FALLING_EDGE ();
-	}
+  /* Falling edge configuration */
+  if ((sConfigPVD->Mode & PVD_FALLING_EDGE) == PVD_FALLING_EDGE)
+  {
+    __HAL_PWR_PVD_EXTI_ENABLE_FALLING_EDGE ();
+  }
 }
 
 /**
- * @brief Enable the Programmable Voltage Detector (PVD).
- * @retval None.
- */
+  * @brief Enable the Programmable Voltage Detector (PVD).
+  * @retval None.
+  */
 void HAL_PWR_EnablePVD (void)
 {
-	/* Enable the power voltage detector */
-	SET_BIT (PWR->CR1, PWR_CR1_PVDEN);
+  /* Enable the power voltage detector */
+  SET_BIT (PWR->CR1, PWR_CR1_PVDEN);
 }
 
 /**
- * @brief Disable the Programmable Voltage Detector (PVD).
- * @retval None.
- */
+  * @brief Disable the Programmable Voltage Detector (PVD).
+  * @retval None.
+  */
 void HAL_PWR_DisablePVD (void)
 {
-	/* Disable the power voltage detector */
-	CLEAR_BIT (PWR->CR1, PWR_CR1_PVDEN);
+  /* Disable the power voltage detector */
+  CLEAR_BIT (PWR->CR1, PWR_CR1_PVDEN);
 }
 
 /**
- * @brief  Enable the WakeUp PINx functionality.
- * @param  WakeUpPinPolarity : Specifies which Wake-Up pin to enable.
- *          This parameter can be one of the following legacy values, which
- *          sets the default (rising edge):
- *            @arg PWR_WAKEUP_PIN1, PWR_WAKEUP_PIN2, PWR_WAKEUP_PIN3,
- *                 PWR_WAKEUP_PIN4, PWR_WAKEUP_PIN5, PWR_WAKEUP_PIN6.
- *          or one of the following values where the user can explicitly states
- *          the enabled pin and the chosen polarity:
- *            @arg PWR_WAKEUP_PIN1_HIGH, PWR_WAKEUP_PIN1_LOW,
- *                 PWR_WAKEUP_PIN2_HIGH, PWR_WAKEUP_PIN2_LOW,
- *                 PWR_WAKEUP_PIN3_HIGH, PWR_WAKEUP_PIN3_LOW,
- *                 PWR_WAKEUP_PIN4_HIGH, PWR_WAKEUP_PIN4_LOW,
- *                 PWR_WAKEUP_PIN5_HIGH, PWR_WAKEUP_PIN5_LOW,
- *                 PWR_WAKEUP_PIN6_HIGH, PWR_WAKEUP_PIN6_LOW.
- * @note   PWR_WAKEUP_PINx and PWR_WAKEUP_PINx_HIGH are equivalent.
- * @note   The PWR_WAKEUP_PIN3_HIGH, PWR_WAKEUP_PIN3_LOW, PWR_WAKEUP_PIN5_HIGH
- *         and PWR_WAKEUP_PIN5_LOW are available only for devices that includes
- *         GPIOI port.
- * @retval None.
- */
+  * @brief  Enable the WakeUp PINx functionality.
+  * @param  WakeUpPinPolarity : Specifies which Wake-Up pin to enable.
+  *          This parameter can be one of the following legacy values, which
+  *          sets the default (rising edge):
+  *            @arg PWR_WAKEUP_PIN1, PWR_WAKEUP_PIN2, PWR_WAKEUP_PIN3,
+  *                 PWR_WAKEUP_PIN4, PWR_WAKEUP_PIN5, PWR_WAKEUP_PIN6.
+  *          or one of the following values where the user can explicitly states
+  *          the enabled pin and the chosen polarity:
+  *            @arg PWR_WAKEUP_PIN1_HIGH, PWR_WAKEUP_PIN1_LOW,
+  *                 PWR_WAKEUP_PIN2_HIGH, PWR_WAKEUP_PIN2_LOW,
+  *                 PWR_WAKEUP_PIN3_HIGH, PWR_WAKEUP_PIN3_LOW,
+  *                 PWR_WAKEUP_PIN4_HIGH, PWR_WAKEUP_PIN4_LOW,
+  *                 PWR_WAKEUP_PIN5_HIGH, PWR_WAKEUP_PIN5_LOW,
+  *                 PWR_WAKEUP_PIN6_HIGH, PWR_WAKEUP_PIN6_LOW.
+  * @note   PWR_WAKEUP_PINx and PWR_WAKEUP_PINx_HIGH are equivalent.
+  * @note   The PWR_WAKEUP_PIN3_HIGH, PWR_WAKEUP_PIN3_LOW, PWR_WAKEUP_PIN5_HIGH
+  *         and PWR_WAKEUP_PIN5_LOW are available only for devices that includes
+  *         GPIOI port.
+  * @retval None.
+  */
 void HAL_PWR_EnableWakeUpPin (uint32_t WakeUpPinPolarity)
 {
-	/* Check the parameters */
-	assert_param (IS_PWR_WAKEUP_PIN (WakeUpPinPolarity));
+  /* Check the parameters */
+  assert_param (IS_PWR_WAKEUP_PIN (WakeUpPinPolarity));
 
-	/*
-	   Enable and Specify the Wake-Up pin polarity and the pull configuration
-	   for the event detection (rising or falling edge).
-	 */
-	MODIFY_REG (PWR->WKUPEPR, PWR_EWUP_MASK, WakeUpPinPolarity);
+  /*
+     Enable and Specify the Wake-Up pin polarity and the pull configuration
+     for the event detection (rising or falling edge).
+  */
+  MODIFY_REG (PWR->WKUPEPR, PWR_EWUP_MASK, WakeUpPinPolarity);
 }
 
 /**
- * @brief  Disable the WakeUp PINx functionality.
- * @param  WakeUpPinx : Specifies the Power Wake-Up pin to disable.
- *          This parameter can be one of the following values:
- *            @arg PWR_WAKEUP_PIN1, PWR_WAKEUP_PIN2, PWR_WAKEUP_PIN3,
- *                 PWR_WAKEUP_PIN4, PWR_WAKEUP_PIN5, PWR_WAKEUP_PIN6,
- *                 PWR_WAKEUP_PIN1_HIGH, PWR_WAKEUP_PIN1_LOW,
- *                 PWR_WAKEUP_PIN2_HIGH, PWR_WAKEUP_PIN2_LOW,
- *                 PWR_WAKEUP_PIN3_HIGH, PWR_WAKEUP_PIN3_LOW,
- *                 PWR_WAKEUP_PIN4_HIGH, PWR_WAKEUP_PIN4_LOW,
- *                 PWR_WAKEUP_PIN5_HIGH, PWR_WAKEUP_PIN5_LOW,
- *                 PWR_WAKEUP_PIN6_HIGH, PWR_WAKEUP_PIN6_LOW.
- * @note   The PWR_WAKEUP_PIN3_HIGH, PWR_WAKEUP_PIN3_LOW, PWR_WAKEUP_PIN5_HIGH
- *         and PWR_WAKEUP_PIN5_LOW are available only for devices that includes
- *         GPIOI port.
- * @retval None.
- */
+  * @brief  Disable the WakeUp PINx functionality.
+  * @param  WakeUpPinx : Specifies the Power Wake-Up pin to disable.
+  *          This parameter can be one of the following values:
+  *            @arg PWR_WAKEUP_PIN1, PWR_WAKEUP_PIN2, PWR_WAKEUP_PIN3,
+  *                 PWR_WAKEUP_PIN4, PWR_WAKEUP_PIN5, PWR_WAKEUP_PIN6,
+  *                 PWR_WAKEUP_PIN1_HIGH, PWR_WAKEUP_PIN1_LOW,
+  *                 PWR_WAKEUP_PIN2_HIGH, PWR_WAKEUP_PIN2_LOW,
+  *                 PWR_WAKEUP_PIN3_HIGH, PWR_WAKEUP_PIN3_LOW,
+  *                 PWR_WAKEUP_PIN4_HIGH, PWR_WAKEUP_PIN4_LOW,
+  *                 PWR_WAKEUP_PIN5_HIGH, PWR_WAKEUP_PIN5_LOW,
+  *                 PWR_WAKEUP_PIN6_HIGH, PWR_WAKEUP_PIN6_LOW.
+  * @note   The PWR_WAKEUP_PIN3_HIGH, PWR_WAKEUP_PIN3_LOW, PWR_WAKEUP_PIN5_HIGH
+  *         and PWR_WAKEUP_PIN5_LOW are available only for devices that includes
+  *         GPIOI port.
+  * @retval None.
+  */
 void HAL_PWR_DisableWakeUpPin (uint32_t WakeUpPinx)
 {
-	/* Check the parameters */
-	assert_param (IS_PWR_WAKEUP_PIN (WakeUpPinx));
+  /* Check the parameters */
+  assert_param (IS_PWR_WAKEUP_PIN (WakeUpPinx));
 
-	/* Disable the wake up pin selected */
-	CLEAR_BIT (PWR->WKUPEPR, (PWR_WKUPEPR_WKUPEN & WakeUpPinx));
+  /* Disable the wake up pin selected */
+  CLEAR_BIT (PWR->WKUPEPR, (PWR_WKUPEPR_WKUPEN & WakeUpPinx));
 }
 
 /**
- * @brief  Enter the current core in SLEEP mode (CSLEEP).
- * @param  Regulator : Specifies the regulator state in SLEEP mode.
- *          This parameter can be one of the following values:
- *            @arg PWR_MAINREGULATOR_ON     : SLEEP mode with regulator ON.
- *            @arg PWR_LOWPOWERREGULATOR_ON : SLEEP mode with low power
- *                                           regulator ON.
- * @note   This parameter is not used for the STM32H7 family and is kept as
- *         parameter just to maintain compatibility with the lower power
- *         families.
- * @param  SLEEPEntry : Specifies if SLEEP mode is entered with WFI or WFE
- *                      intrinsic instruction.
- *          This parameter can be one of the following values:
- *            @arg PWR_SLEEPENTRY_WFI : enter SLEEP mode with WFI instruction.
- *            @arg PWR_SLEEPENTRY_WFE : enter SLEEP mode with WFE instruction.
- * @note   Ensure to clear pending events before calling this API through
- *         HAL_PWREx_ClearPendingEvent() when the SLEEP entry is WFE.
- * @retval None.
- */
+  * @brief  Enter the current core in SLEEP mode (CSLEEP).
+  * @param  Regulator : Specifies the regulator state in SLEEP mode.
+  *          This parameter can be one of the following values:
+  *            @arg PWR_MAINREGULATOR_ON     : SLEEP mode with regulator ON.
+  *            @arg PWR_LOWPOWERREGULATOR_ON : SLEEP mode with low power
+  *                                           regulator ON.
+  * @note   This parameter is not used for the STM32H7 family and is kept as
+  *         parameter just to maintain compatibility with the lower power
+  *         families.
+  * @param  SLEEPEntry : Specifies if SLEEP mode is entered with WFI or WFE
+  *                      intrinsic instruction.
+  *          This parameter can be one of the following values:
+  *            @arg PWR_SLEEPENTRY_WFI : enter SLEEP mode with WFI instruction.
+  *            @arg PWR_SLEEPENTRY_WFE : enter SLEEP mode with WFE instruction.
+  * @note   Ensure to clear pending events before calling this API through
+  *         HAL_PWREx_ClearPendingEvent() when the SLEEP entry is WFE.
+  * @retval None.
+  */
 void HAL_PWR_EnterSLEEPMode (uint32_t Regulator, uint8_t SLEEPEntry)
 {
-	/* Check the parameters */
-	assert_param (IS_PWR_REGULATOR (Regulator));
-	assert_param (IS_PWR_SLEEP_ENTRY (SLEEPEntry));
+  /* Check the parameters */
+  assert_param (IS_PWR_REGULATOR (Regulator));
+  assert_param (IS_PWR_SLEEP_ENTRY (SLEEPEntry));
 
-	/* Clear SLEEPDEEP bit of Cortex System Control Register */
-	CLEAR_BIT (SCB->SCR, SCB_SCR_SLEEPDEEP_Msk);
+  /* Clear SLEEPDEEP bit of Cortex System Control Register */
+  CLEAR_BIT (SCB->SCR, SCB_SCR_SLEEPDEEP_Msk);
 
-	/* Select SLEEP mode entry */
-	if (SLEEPEntry == PWR_SLEEPENTRY_WFI)
-	{
-		/* Request Wait For Interrupt */
-		__WFI ();
-	}
-	else
-	{
-		/* Request Wait For Event */
-		__WFE ();
-	}
+  /* Select SLEEP mode entry */
+  if (SLEEPEntry == PWR_SLEEPENTRY_WFI)
+  {
+    /* Request Wait For Interrupt */
+    __WFI ();
+  }
+  else
+  {
+    /* Request Wait For Event */
+    __WFE ();
+  }
 }
 
 /**
- * @brief  Enter STOP mode.
- * @note   For single core devices, this API will enter the system in STOP mode
- *         with all domains in DSTOP, if RUN_D3/RUN_SRD bit in CPUCR regiter is
- *         cleared.
- *         For dual core devices, this API will enter the domain (containing
- *         Cortex-Mx that executing this function) in DSTOP mode. If all
- *         Cortex-Mx domains are in DSTOP and RUN_D3 bit in CPUCR register is
- *         cleared, all the system will enter in STOP mode.
- * @param  Regulator : Specifies the regulator state in STOP mode.
- *          This parameter can be one of the following values:
- *            @arg PWR_MAINREGULATOR_ON     : STOP mode with regulator ON.
- *            @arg PWR_LOWPOWERREGULATOR_ON : STOP mode with low power
- *                                            regulator ON.
- * @param  STOPEntry : Specifies if STOP mode in entered with WFI or WFE
- *                     intrinsic instruction.
- *          This parameter can be one of the following values:
- *            @arg PWR_STOPENTRY_WFI : Enter STOP mode with WFI instruction.
- *            @arg PWR_STOPENTRY_WFE : Enter STOP mode with WFE instruction.
- * @note   In System STOP mode, all I/O pins keep the same state as in Run mode.
- * @note   When exiting System STOP mode by issuing an interrupt or a wakeup
- *         event, the HSI RC oscillator is selected as default system wakeup
- *         clock.
- * @note   In System STOP mode, when the voltage regulator operates in low
- *         power mode, an additional startup delay is incurred when the system
- *         is waking up. By keeping the internal regulator ON during STOP mode,
- *         the consumption is higher although the startup time is reduced.
- * @retval None.
- */
+  * @brief  Enter STOP mode.
+  * @note   For single core devices, this API will enter the system in STOP mode
+  *         with all domains in DSTOP, if RUN_D3/RUN_SRD bit in CPUCR regiter is
+  *         cleared.
+  *         For dual core devices, this API will enter the domain (containing
+  *         Cortex-Mx that executing this function) in DSTOP mode. If all
+  *         Cortex-Mx domains are in DSTOP and RUN_D3 bit in CPUCR register is
+  *         cleared, all the system will enter in STOP mode.
+  * @param  Regulator : Specifies the regulator state in STOP mode.
+  *          This parameter can be one of the following values:
+  *            @arg PWR_MAINREGULATOR_ON     : STOP mode with regulator ON.
+  *            @arg PWR_LOWPOWERREGULATOR_ON : STOP mode with low power
+  *                                            regulator ON.
+  * @param  STOPEntry : Specifies if STOP mode in entered with WFI or WFE
+  *                     intrinsic instruction.
+  *          This parameter can be one of the following values:
+  *            @arg PWR_STOPENTRY_WFI : Enter STOP mode with WFI instruction.
+  *            @arg PWR_STOPENTRY_WFE : Enter STOP mode with WFE instruction.
+  * @note   In System STOP mode, all I/O pins keep the same state as in Run mode.
+  * @note   When exiting System STOP mode by issuing an interrupt or a wakeup
+  *         event, the HSI RC oscillator is selected as default system wakeup
+  *         clock.
+  * @note   In System STOP mode, when the voltage regulator operates in low
+  *         power mode, an additional startup delay is incurred when the system
+  *         is waking up. By keeping the internal regulator ON during STOP mode,
+  *         the consumption is higher although the startup time is reduced.
+  * @retval None.
+  */
 void HAL_PWR_EnterSTOPMode (uint32_t Regulator, uint8_t STOPEntry)
 {
-	/* Check the parameters */
-	assert_param (IS_PWR_REGULATOR (Regulator));
-	assert_param (IS_PWR_STOP_ENTRY (STOPEntry));
+  /* Check the parameters */
+  assert_param (IS_PWR_REGULATOR (Regulator));
+  assert_param (IS_PWR_STOP_ENTRY (STOPEntry));
 
-	/* Select the regulator state in STOP mode */
-	MODIFY_REG (PWR->CR1, PWR_CR1_LPDS, Regulator);
+  /* Select the regulator state in STOP mode */
+  MODIFY_REG (PWR->CR1, PWR_CR1_LPDS, Regulator);
 
-	/* Configure the PWR mode for the different Domains */
+  /* Configure the PWR mode for the different Domains */
 #if defined (DUAL_CORE)
-	/* Check CPU ID */
-	if (HAL_GetCurrentCPUID () == CM7_CPUID)
-	{
-		/* Keep DSTOP mode when Cortex-M7 enters DEEP-SLEEP */
-		CLEAR_BIT (PWR->CPUCR, (PWR_CPUCR_PDDS_D1 | PWR_CPUCR_PDDS_D3));
-	}
-	else
-	{
-		/* Keep DSTOP mode when Cortex-M4 enters DEEP-SLEEP */
-		CLEAR_BIT (PWR->CPUCR, (PWR_CPUCR_PDDS_D2 | PWR_CPUCR_PDDS_D3));
-	}
+  /* Check CPU ID */
+  if (HAL_GetCurrentCPUID () == CM7_CPUID)
+  {
+    /* Keep DSTOP mode when Cortex-M7 enters DEEP-SLEEP */
+    CLEAR_BIT (PWR->CPUCR, (PWR_CPUCR_PDDS_D1 | PWR_CPUCR_PDDS_D3));
+  }
+  else
+  {
+    /* Keep DSTOP mode when Cortex-M4 enters DEEP-SLEEP */
+    CLEAR_BIT (PWR->CPUCR, (PWR_CPUCR_PDDS_D2 | PWR_CPUCR_PDDS_D3));
+  }
 #else /* Single core devices */
-	/* Keep DSTOP mode when Cortex-M7 enter in DEEP-SLEEP */
-	CLEAR_BIT (PWR->CPUCR, (PWR_CPUCR_PDDS_D1 | PWR_CPUCR_PDDS_D3));
+  /* Keep DSTOP mode when Cortex-M7 enter in DEEP-SLEEP */
+  CLEAR_BIT (PWR->CPUCR, (PWR_CPUCR_PDDS_D1 | PWR_CPUCR_PDDS_D3));
 
 #if defined (PWR_CPUCR_PDDS_D2)
-	/* Keep DSTOP mode when Cortex-M7 enter in DEEP-SLEEP */
-	CLEAR_BIT (PWR->CPUCR, PWR_CPUCR_PDDS_D2);
+  /* Keep DSTOP mode when Cortex-M7 enter in DEEP-SLEEP */
+  CLEAR_BIT (PWR->CPUCR, PWR_CPUCR_PDDS_D2);
 #endif /* PWR_CPUCR_PDDS_D2 */
 #endif /* defined (DUAL_CORE) */
 
-	/* Set SLEEPDEEP bit of Cortex System Control Register */
-	SET_BIT (SCB->SCR, SCB_SCR_SLEEPDEEP_Msk);
+  /* Set SLEEPDEEP bit of Cortex System Control Register */
+  SET_BIT (SCB->SCR, SCB_SCR_SLEEPDEEP_Msk);
 
-	/* Ensure that all instructions are done before entering STOP mode */
-	__DSB ();
-	__ISB ();
+  /* Ensure that all instructions are done before entering STOP mode */
+  __DSB ();
+  __ISB ();
 
-	/* Select STOP mode entry */
-	if (STOPEntry == PWR_STOPENTRY_WFI)
-	{
-		/* Request Wait For Interrupt */
-		__WFI ();
-	}
-	else
-	{
-		/* Request Wait For Event */
-		__WFE ();
-	}
+  /* Select STOP mode entry */
+  if (STOPEntry == PWR_STOPENTRY_WFI)
+  {
+    /* Request Wait For Interrupt */
+    __WFI ();
+  }
+  else
+  {
+    /* Request Wait For Event */
+    __WFE ();
+  }
 
-	/* Clear SLEEPDEEP bit of Cortex-Mx in the System Control Register */
-	CLEAR_BIT (SCB->SCR, SCB_SCR_SLEEPDEEP_Msk);
+  /* Clear SLEEPDEEP bit of Cortex-Mx in the System Control Register */
+  CLEAR_BIT (SCB->SCR, SCB_SCR_SLEEPDEEP_Msk);
 }
 
 /**
- * @brief  Enter STANDBY mode.
- * @note   For single core devices, this API will enter the system in STANDBY
- *         mode with all domains in DSTANDBY, if RUN_D3/RUN_SRD bit in CPUCR
- *         regiter is cleared.
- *         For dual core devices, this API will enter the domain (containing
- *         Cortex-Mx that executing this function) in DSTANDBY mode. If all
- *         Cortex-Mx domains are in DSTANDBY and RUN_D3 bit in CPUCR register
- *         is cleared, all the system will enter in STANDBY mode.
- * @note   The system enters Standby mode only when all domains are in DSTANDBY.
- * @note   When the System exit STANDBY mode by issuing an interrupt or a
- *         wakeup event, the HSI RC oscillator is selected as system clock.
- * @note   It is recommended to disable all regulators before entring STANDBY
- *         mode for power consumption saving purpose.
- * @retval None.
- */
+  * @brief  Enter STANDBY mode.
+  * @note   For single core devices, this API will enter the system in STANDBY
+  *         mode with all domains in DSTANDBY, if RUN_D3/RUN_SRD bit in CPUCR
+  *         regiter is cleared.
+  *         For dual core devices, this API will enter the domain (containing
+  *         Cortex-Mx that executing this function) in DSTANDBY mode. If all
+  *         Cortex-Mx domains are in DSTANDBY and RUN_D3 bit in CPUCR register
+  *         is cleared, all the system will enter in STANDBY mode.
+  * @note   The system enters Standby mode only when all domains are in DSTANDBY.
+  * @note   When the System exit STANDBY mode by issuing an interrupt or a
+  *         wakeup event, the HSI RC oscillator is selected as system clock.
+  * @note   It is recommended to disable all regulators before entring STANDBY
+  *         mode for power consumption saving purpose.
+  * @retval None.
+  */
 void HAL_PWR_EnterSTANDBYMode (void)
 {
-	/* Configure the PWR mode for the different Domains */
+  /* Configure the PWR mode for the different Domains */
 #if defined (DUAL_CORE)
-	/* Check CPU ID */
-	if (HAL_GetCurrentCPUID () == CM7_CPUID)
-	{
-		/* Enter DSTANDBY mode when Cortex-M7 enters DEEP-SLEEP */
-		SET_BIT (PWR->CPUCR, (PWR_CPUCR_PDDS_D1 | PWR_CPUCR_PDDS_D3));
-		SET_BIT (PWR->CPU2CR, (PWR_CPU2CR_PDDS_D1 | PWR_CPU2CR_PDDS_D3));
-	}
-	else
-	{
-		/* Enter DSTANDBY mode when Cortex-M4 enters DEEP-SLEEP */
-		SET_BIT (PWR->CPUCR, (PWR_CPUCR_PDDS_D2 | PWR_CPUCR_PDDS_D3));
-		SET_BIT (PWR->CPU2CR, (PWR_CPU2CR_PDDS_D2 | PWR_CPU2CR_PDDS_D3));
-	}
+  /* Check CPU ID */
+  if (HAL_GetCurrentCPUID () == CM7_CPUID)
+  {
+    /* Enter DSTANDBY mode when Cortex-M7 enters DEEP-SLEEP */
+    SET_BIT (PWR->CPUCR, (PWR_CPUCR_PDDS_D1 | PWR_CPUCR_PDDS_D3));
+    SET_BIT (PWR->CPU2CR, (PWR_CPU2CR_PDDS_D1 | PWR_CPU2CR_PDDS_D3));
+  }
+  else
+  {
+    /* Enter DSTANDBY mode when Cortex-M4 enters DEEP-SLEEP */
+    SET_BIT (PWR->CPUCR, (PWR_CPUCR_PDDS_D2 | PWR_CPUCR_PDDS_D3));
+    SET_BIT (PWR->CPU2CR, (PWR_CPU2CR_PDDS_D2 | PWR_CPU2CR_PDDS_D3));
+  }
 #else /* Single core devices */
-	/* Enter DSTANDBY mode when Cortex-M7 enters DEEP-SLEEP */
-	SET_BIT (PWR->CPUCR, (PWR_CPUCR_PDDS_D1 | PWR_CPUCR_PDDS_D3));
+  /* Enter DSTANDBY mode when Cortex-M7 enters DEEP-SLEEP */
+  SET_BIT (PWR->CPUCR, (PWR_CPUCR_PDDS_D1 | PWR_CPUCR_PDDS_D3));
 
 #if defined (PWR_CPUCR_PDDS_D2)
-	/* Enter DSTANDBY mode when Cortex-M7 enters DEEP-SLEEP */
-	SET_BIT (PWR->CPUCR, PWR_CPUCR_PDDS_D2);
+  /* Enter DSTANDBY mode when Cortex-M7 enters DEEP-SLEEP */
+  SET_BIT (PWR->CPUCR, PWR_CPUCR_PDDS_D2);
 #endif /* PWR_CPUCR_PDDS_D2 */
 #endif /* defined (DUAL_CORE) */
 
-	/* Set SLEEPDEEP bit of Cortex System Control Register */
-	SET_BIT (SCB->SCR, SCB_SCR_SLEEPDEEP_Msk);
+  /* Set SLEEPDEEP bit of Cortex System Control Register */
+  SET_BIT (SCB->SCR, SCB_SCR_SLEEPDEEP_Msk);
 
-	/* Ensure that all instructions are done before entering STOP mode */
-	__DSB ();
-	__ISB ();
+  /* Ensure that all instructions are done before entering STOP mode */
+  __DSB ();
+  __ISB ();
 
-	/* This option is used to ensure that store operations are completed */
+  /* This option is used to ensure that store operations are completed */
 #if defined (__CC_ARM)
-	__force_stores();
+  __force_stores();
 #endif /* defined (__CC_ARM) */
 
-	/* Request Wait For Interrupt */
-	__WFI ();
+  /* Request Wait For Interrupt */
+  __WFI ();
 }
 
 /**
- * @brief  Indicate Sleep-On-Exit feature when returning from Handler mode to
- *         Thread mode.
- * @note   Set SLEEPONEXIT bit of SCR register. When this bit is set, the
- *         processor re-enters SLEEP mode when an interruption handling is over.
- *         Setting this bit is useful when the processor is expected to run
- *         only on interruptions handling.
- * @retval None.
- */
+  * @brief  Indicate Sleep-On-Exit feature when returning from Handler mode to
+  *         Thread mode.
+  * @note   Set SLEEPONEXIT bit of SCR register. When this bit is set, the
+  *         processor re-enters SLEEP mode when an interruption handling is over.
+  *         Setting this bit is useful when the processor is expected to run
+  *         only on interruptions handling.
+  * @retval None.
+  */
 void HAL_PWR_EnableSleepOnExit (void)
 {
-	/* Set SLEEPONEXIT bit of Cortex-Mx System Control Register */
-	SET_BIT (SCB->SCR, SCB_SCR_SLEEPONEXIT_Msk);
+  /* Set SLEEPONEXIT bit of Cortex-Mx System Control Register */
+  SET_BIT (SCB->SCR, SCB_SCR_SLEEPONEXIT_Msk);
 }
 
 /**
- * @brief  Disable Sleep-On-Exit feature when returning from Handler mode to
- *         Thread mode.
- * @note   Clears SLEEPONEXIT bit of SCR register. When this bit is set, the
- *         processor re-enters SLEEP mode when an interruption handling is over.
- * @retval None
- */
+  * @brief  Disable Sleep-On-Exit feature when returning from Handler mode to
+  *         Thread mode.
+  * @note   Clears SLEEPONEXIT bit of SCR register. When this bit is set, the
+  *         processor re-enters SLEEP mode when an interruption handling is over.
+  * @retval None
+  */
 void HAL_PWR_DisableSleepOnExit (void)
 {
-	/* Clear SLEEPONEXIT bit of Cortex-Mx System Control Register */
-	CLEAR_BIT (SCB->SCR, SCB_SCR_SLEEPONEXIT_Msk);
+  /* Clear SLEEPONEXIT bit of Cortex-Mx System Control Register */
+  CLEAR_BIT (SCB->SCR, SCB_SCR_SLEEPONEXIT_Msk);
 }
 
 /**
- * @brief  Enable CORTEX SEVONPEND feature.
- * @note   Sets SEVONPEND bit of SCR register. When this bit is set, any
- *         pending event / interrupt even if it's disabled or has insufficient
- *         priority to cause exception entry wakes up the Cortex-Mx.
- * @retval None.
- */
+  * @brief  Enable CORTEX SEVONPEND feature.
+  * @note   Sets SEVONPEND bit of SCR register. When this bit is set, any
+  *         pending event / interrupt even if it's disabled or has insufficient
+  *         priority to cause exception entry wakes up the Cortex-Mx.
+  * @retval None.
+  */
 void HAL_PWR_EnableSEVOnPend (void)
 {
-	/* Set SEVONPEND bit of Cortex-Mx System Control Register */
-	SET_BIT (SCB->SCR, SCB_SCR_SEVONPEND_Msk);
+  /* Set SEVONPEND bit of Cortex-Mx System Control Register */
+  SET_BIT (SCB->SCR, SCB_SCR_SEVONPEND_Msk);
 }
 
 /**
- * @brief  Disable CORTEX SEVONPEND feature.
- * @note   Resets SEVONPEND bit of SCR register. When this bit is reset, only
- *         enabled pending causes exception entry wakes up the Cortex-Mx.
- * @retval None.
- */
+  * @brief  Disable CORTEX SEVONPEND feature.
+  * @note   Resets SEVONPEND bit of SCR register. When this bit is reset, only
+  *         enabled pending causes exception entry wakes up the Cortex-Mx.
+  * @retval None.
+  */
 void HAL_PWR_DisableSEVOnPend (void)
 {
-	/* Clear SEVONPEND bit of Cortex System Control Register */
-	CLEAR_BIT (SCB->SCR, SCB_SCR_SEVONPEND_Msk);
+  /* Clear SEVONPEND bit of Cortex System Control Register */
+  CLEAR_BIT (SCB->SCR, SCB_SCR_SEVONPEND_Msk);
 }
 /**
- * @}
- */
+  * @}
+  */
 
 /** @defgroup PWR_Exported_Functions_Group3 Interrupt Handling Functions
- *  @brief   Interrupt Handling functions
- *
-   @verbatim
-   ===============================================================================
- ##### Interrupt Handling Functions #####
-   ===============================================================================
+  *  @brief   Interrupt Handling functions
+  *
+@verbatim
+ ===============================================================================
+                    ##### Interrupt Handling Functions #####
+ ===============================================================================
     [..]
     This section provides functions allowing to handle the PVD pending
     interrupts.
 
-   @endverbatim
- * @{
- */
+@endverbatim
+  * @{
+  */
 
 /**
- * @brief  This function handles the PWR PVD interrupt request.
- * @note   This API should be called under the PVD_AVD_IRQHandler().
- * @retval None.
- */
+  * @brief  This function handles the PWR PVD interrupt request.
+  * @note   This API should be called under the PVD_AVD_IRQHandler().
+  * @retval None.
+  */
 void HAL_PWR_PVD_IRQHandler (void)
 {
 #if defined (DUAL_CORE)
-	/* Check Cortex-Mx ID */
-	if (HAL_GetCurrentCPUID () == CM7_CPUID)
-	{
-		/* Check PWR EXTI D1 flag */
-		if(__HAL_PWR_PVD_EXTI_GET_FLAG () != 0U)
-		{
-			/* Clear PWR EXTI D1 pending bit */
-			__HAL_PWR_PVD_EXTI_CLEAR_FLAG ();
+  /* Check Cortex-Mx ID */
+  if (HAL_GetCurrentCPUID () == CM7_CPUID)
+  {
+    /* Check PWR EXTI D1 flag */
+    if(__HAL_PWR_PVD_EXTI_GET_FLAG () != 0U)
+    {
+      /* Clear PWR EXTI D1 pending bit */
+      __HAL_PWR_PVD_EXTI_CLEAR_FLAG ();
 
-			/* PWR PVD interrupt user callback */
-			HAL_PWR_PVDCallback ();
-		}
-	}
-	else
-	{
-		/* Check PWR EXTI D2 flag */
-		if (__HAL_PWR_PVD_EXTID2_GET_FLAG () != 0U)
-		{
-			/* Clear PWR EXTI D2 pending bit */
-			__HAL_PWR_PVD_EXTID2_CLEAR_FLAG ();
+      /* PWR PVD interrupt user callback */
+      HAL_PWR_PVDCallback ();
+    }
+  }
+  else
+  {
+    /* Check PWR EXTI D2 flag */
+    if (__HAL_PWR_PVD_EXTID2_GET_FLAG () != 0U)
+    {
+      /* Clear PWR EXTI D2 pending bit */
+      __HAL_PWR_PVD_EXTID2_CLEAR_FLAG ();
 
-			/* PWR PVD interrupt user callback */
-			HAL_PWR_PVDCallback ();
-		}
-	}
+      /* PWR PVD interrupt user callback */
+      HAL_PWR_PVDCallback ();
+    }
+  }
 #else /* Single core devices */
-	/* PVD EXTI line interrupt detected */
-	if (__HAL_PWR_PVD_EXTI_GET_FLAG () != 0U)
-	{
-		/* Clear PWR EXTI pending bit */
-		__HAL_PWR_PVD_EXTI_CLEAR_FLAG ();
+  /* PVD EXTI line interrupt detected */
+  if (__HAL_PWR_PVD_EXTI_GET_FLAG () != 0U)
+  {
+    /* Clear PWR EXTI pending bit */
+    __HAL_PWR_PVD_EXTI_CLEAR_FLAG ();
 
-		/* PWR PVD interrupt user callback */
-		HAL_PWR_PVDCallback ();
-	}
+    /* PWR PVD interrupt user callback */
+    HAL_PWR_PVDCallback ();
+  }
 #endif /* defined (DUAL_CORE) */
 }
 
 /**
- * @brief  PWR PVD interrupt callback.
- * @retval None.
- */
+  * @brief  PWR PVD interrupt callback.
+  * @retval None.
+  */
 __weak void HAL_PWR_PVDCallback (void)
 {
-	/* NOTE : This function should not be modified, when the callback is needed,
-	          the HAL_PWR_PVDCallback can be implemented in the user file
-	 */
+  /* NOTE : This function should not be modified, when the callback is needed,
+            the HAL_PWR_PVDCallback can be implemented in the user file
+  */
 }
 
 /**
- * @}
- */
+  * @}
+  */
 
 /**
- * @}
- */
+  * @}
+  */
 
 #endif /* HAL_PWR_MODULE_ENABLED */
 /**
- * @}
- */
+  * @}
+  */
 
 /**
- * @}
- */
+  * @}
+  */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

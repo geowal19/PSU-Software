@@ -19,10 +19,12 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "dma.h"
 #include "i2c.h"
 #include "ltdc.h"
 #include "spi.h"
 #include "tim.h"
+#include "usart.h"
 #include "gpio.h"
 #include "fmc.h"
 
@@ -90,6 +92,7 @@ int main(void)
 
 	/* Initialize all configured peripherals */
 	MX_GPIO_Init();
+	MX_DMA_Init();
 	MX_FMC_Init();
 	MX_I2C1_Init();
 	MX_LTDC_Init();
@@ -98,6 +101,7 @@ int main(void)
 	MX_TIM7_Init();
 	MX_TIM13_Init();
 	MX_TIM14_Init();
+	MX_USART1_UART_Init();
 	/* USER CODE BEGIN 2 */
 
 	/* USER CODE END 2 */
@@ -171,8 +175,9 @@ void SystemClock_Config(void)
 	{
 		Error_Handler();
 	}
-	PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_LTDC | RCC_PERIPHCLK_SPI1
-	                                           | RCC_PERIPHCLK_I2C1 | RCC_PERIPHCLK_FMC;
+	PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_LTDC | RCC_PERIPHCLK_USART1
+	                                           | RCC_PERIPHCLK_SPI1 | RCC_PERIPHCLK_I2C1
+	                                           | RCC_PERIPHCLK_FMC;
 	PeriphClkInitStruct.PLL3.PLL3M = 32;
 	PeriphClkInitStruct.PLL3.PLL3N = 129;
 	PeriphClkInitStruct.PLL3.PLL3P = 2;
@@ -183,6 +188,7 @@ void SystemClock_Config(void)
 	PeriphClkInitStruct.PLL3.PLL3FRACN = 0;
 	PeriphClkInitStruct.FmcClockSelection = RCC_FMCCLKSOURCE_D1HCLK;
 	PeriphClkInitStruct.Spi123ClockSelection = RCC_SPI123CLKSOURCE_PLL;
+	PeriphClkInitStruct.Usart16ClockSelection = RCC_USART16CLKSOURCE_D2PCLK2;
 	PeriphClkInitStruct.I2c123ClockSelection = RCC_I2C123CLKSOURCE_D2PCLK1;
 	if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
 	{

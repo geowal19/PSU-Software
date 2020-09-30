@@ -30,7 +30,13 @@
 
 /* USER CODE END 1 */
 
-/** Pinout Configuration
+/** Configure pins
+     PE2   ------> DEBUG_TRACECLK
+     PE3   ------> DEBUG_TRACED0
+     PA13 (JTMS/SWDIO)   ------> DEBUG_JTMS-SWDIO
+     PA14 (JTCK/SWCLK)   ------> DEBUG_JTCK-SWCLK
+     PA15 (JTDI)   ------> DEBUG_JTDI
+     PB3 (JTDO/TRACESWO)   ------> DEBUG_JTDO-SWO
  */
 void MX_GPIO_Init(void)
 {

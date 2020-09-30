@@ -30,6 +30,7 @@ LTDC_HandleTypeDef hltdc;
 void MX_LTDC_Init(void)
 {
 	LTDC_LayerCfgTypeDef pLayerCfg = {0};
+	LTDC_LayerCfgTypeDef pLayerCfg1 = {0};
 
 	hltdc.Instance = LTDC;
 	hltdc.Init.HSPolarity = LTDC_HSPOLARITY_AL;
@@ -51,7 +52,6 @@ void MX_LTDC_Init(void)
 	{
 		Error_Handler();
 	}
-
 	pLayerCfg.WindowX0 = 0;
 	pLayerCfg.WindowX1 = 800;
 	pLayerCfg.WindowY0 = 0;
@@ -71,6 +71,25 @@ void MX_LTDC_Init(void)
 	{
 		Error_Handler();
 	}
+	pLayerCfg1.WindowX0 = 0;
+	pLayerCfg1.WindowX1 = 0;
+	pLayerCfg1.WindowY0 = 0;
+	pLayerCfg1.WindowY1 = 0;
+	pLayerCfg1.Alpha = 0;
+	pLayerCfg1.Alpha0 = 0;
+	pLayerCfg1.BlendingFactor1 = LTDC_BLENDING_FACTOR1_CA;
+	pLayerCfg1.BlendingFactor2 = LTDC_BLENDING_FACTOR2_CA;
+	pLayerCfg1.FBStartAdress = GFXMMU_VIRTUAL_BUFFER0_BASE;
+	pLayerCfg1.ImageWidth = 0;
+	pLayerCfg1.ImageHeight = 0;
+	pLayerCfg1.Backcolor.Blue = 0;
+	pLayerCfg1.Backcolor.Green = 0;
+	pLayerCfg1.Backcolor.Red = 0;
+	if (HAL_LTDC_ConfigLayer(&hltdc, &pLayerCfg1, 1) != HAL_OK)
+	{
+		Error_Handler();
+	}
+
 }
 
 void HAL_LTDC_MspInit(LTDC_HandleTypeDef* ltdcHandle)
@@ -101,7 +120,6 @@ void HAL_LTDC_MspInit(LTDC_HandleTypeDef* ltdcHandle)
 		   PA2     ------> LTDC_R1
 		   PA3     ------> LTDC_B5
 		   PA4     ------> LTDC_VSYNC
-		   PA5     ------> LTDC_R4
 		   PA6     ------> LTDC_G2
 		   PB0     ------> LTDC_R3
 		   PB1     ------> LTDC_R6
@@ -115,6 +133,7 @@ void HAL_LTDC_MspInit(LTDC_HandleTypeDef* ltdcHandle)
 		   PA8     ------> LTDC_B3
 		   PA9     ------> LTDC_R5
 		   PA10     ------> LTDC_B4
+		   PA11     ------> LTDC_R4
 		   PD3     ------> LTDC_G7
 		   PD6     ------> LTDC_B2
 		   PG12     ------> LTDC_B1
@@ -137,7 +156,7 @@ void HAL_LTDC_MspInit(LTDC_HandleTypeDef* ltdcHandle)
 		HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);
 
 		GPIO_InitStruct.Pin = GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4
-		                      | GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_9;
+		                      | GPIO_PIN_6 | GPIO_PIN_9 | GPIO_PIN_11;
 		GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
 		GPIO_InitStruct.Pull = GPIO_NOPULL;
 		GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -226,7 +245,6 @@ void HAL_LTDC_MspDeInit(LTDC_HandleTypeDef* ltdcHandle)
 		   PA2     ------> LTDC_R1
 		   PA3     ------> LTDC_B5
 		   PA4     ------> LTDC_VSYNC
-		   PA5     ------> LTDC_R4
 		   PA6     ------> LTDC_G2
 		   PB0     ------> LTDC_R3
 		   PB1     ------> LTDC_R6
@@ -240,6 +258,7 @@ void HAL_LTDC_MspDeInit(LTDC_HandleTypeDef* ltdcHandle)
 		   PA8     ------> LTDC_B3
 		   PA9     ------> LTDC_R5
 		   PA10     ------> LTDC_B4
+		   PA11     ------> LTDC_R4
 		   PD3     ------> LTDC_G7
 		   PD6     ------> LTDC_B2
 		   PG12     ------> LTDC_B1
@@ -252,8 +271,8 @@ void HAL_LTDC_MspDeInit(LTDC_HandleTypeDef* ltdcHandle)
 		HAL_GPIO_DeInit(GPIOF, GPIO_PIN_10);
 
 		HAL_GPIO_DeInit(GPIOA, GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4
-		                | GPIO_PIN_5 | GPIO_PIN_6 | GPIO_PIN_8 | GPIO_PIN_9
-		                | GPIO_PIN_10);
+		                | GPIO_PIN_6 | GPIO_PIN_8 | GPIO_PIN_9 | GPIO_PIN_10
+		                | GPIO_PIN_11);
 
 		HAL_GPIO_DeInit(GPIOB, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_10 | GPIO_PIN_11
 		                | GPIO_PIN_8 | GPIO_PIN_9);
