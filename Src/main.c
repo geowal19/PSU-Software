@@ -102,6 +102,9 @@ int main(void)
 	MX_TIM13_Init();
 	MX_TIM14_Init();
 	MX_USART1_UART_Init();
+	MX_TIM2_Init();
+	MX_TIM16_Init();
+	MX_TIM17_Init();
 	/* USER CODE BEGIN 2 */
 
 	/* USER CODE END 2 */
