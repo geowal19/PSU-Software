@@ -181,6 +181,14 @@ void SystemClock_Config(void)
 	PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_LTDC | RCC_PERIPHCLK_USART1
 	                                           | RCC_PERIPHCLK_SPI1 | RCC_PERIPHCLK_I2C1
 	                                           | RCC_PERIPHCLK_FMC;
+	PeriphClkInitStruct.PLL2.PLL2M = 32;
+	PeriphClkInitStruct.PLL2.PLL2N = 100;
+	PeriphClkInitStruct.PLL2.PLL2P = 2;
+	PeriphClkInitStruct.PLL2.PLL2Q = 2;
+	PeriphClkInitStruct.PLL2.PLL2R = 2;
+	PeriphClkInitStruct.PLL2.PLL2RGE = RCC_PLL2VCIRANGE_1;
+	PeriphClkInitStruct.PLL2.PLL2VCOSEL = RCC_PLL2VCOWIDE;
+	PeriphClkInitStruct.PLL2.PLL2FRACN = 0;
 	PeriphClkInitStruct.PLL3.PLL3M = 32;
 	PeriphClkInitStruct.PLL3.PLL3N = 129;
 	PeriphClkInitStruct.PLL3.PLL3P = 2;
@@ -189,7 +197,7 @@ void SystemClock_Config(void)
 	PeriphClkInitStruct.PLL3.PLL3RGE = RCC_PLL3VCIRANGE_1;
 	PeriphClkInitStruct.PLL3.PLL3VCOSEL = RCC_PLL3VCOWIDE;
 	PeriphClkInitStruct.PLL3.PLL3FRACN = 0;
-	PeriphClkInitStruct.FmcClockSelection = RCC_FMCCLKSOURCE_D1HCLK;
+	PeriphClkInitStruct.FmcClockSelection = RCC_FMCCLKSOURCE_PLL2;
 	PeriphClkInitStruct.Spi123ClockSelection = RCC_SPI123CLKSOURCE_PLL;
 	PeriphClkInitStruct.Usart16ClockSelection = RCC_USART16CLKSOURCE_D2PCLK2;
 	PeriphClkInitStruct.I2c123ClockSelection = RCC_I2C123CLKSOURCE_D2PCLK1;
