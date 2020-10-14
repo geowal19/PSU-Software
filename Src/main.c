@@ -31,6 +31,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "font.h"
+#include "background.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -114,6 +115,11 @@ int main(void)
 	while (1)
 	{
 		/* USER CODE END WHILE */
+
+		if(background[HAL_GetTick()] == 232)
+		{
+			asm("NOP");
+		}
 
 		/* USER CODE BEGIN 3 */
 	}
