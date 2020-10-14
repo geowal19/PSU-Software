@@ -30,7 +30,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "font.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/

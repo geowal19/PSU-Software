@@ -133,6 +133,7 @@ AS_INCLUDES =
 # C includes
 C_INCLUDES =  \
 -IInc \
+-IFonts \
 -IDrivers/STM32H7xx_HAL_Driver/Inc \
 -IDrivers/STM32H7xx_HAL_Driver/Inc/Legacy \
 -IDrivers/CMSIS/Device/ST/STM32H7xx/Include \

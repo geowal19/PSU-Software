@@ -62,7 +62,7 @@
 </layers>
 <board>
 <plain>
-<text x="0" y="0" size="12" layer="21" font="vector">001123456789</text>
+<text x="0" y="0" size="12" layer="21" font="vector">0123456789.</text>
 </plain>
 <libraries>
 </libraries>
