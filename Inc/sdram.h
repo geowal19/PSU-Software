@@ -1,9 +1,6 @@
 #ifndef __SDRAM_H__
 #define __SDRAM_H__
 
-#include <stdint.h>
-#include <string.h>
-
 #include "main.h"
 #include "fmc.h"
 

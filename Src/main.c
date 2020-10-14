@@ -30,8 +30,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "font.h"
-#include "background.h"
+#include "system.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -108,6 +107,8 @@ int main(void)
 	MX_TIM17_Init();
 	/* USER CODE BEGIN 2 */
 
+	System();
+
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
@@ -115,11 +116,6 @@ int main(void)
 	while (1)
 	{
 		/* USER CODE END WHILE */
-
-		if(background[HAL_GetTick()] == 232)
-		{
-			asm("NOP");
-		}
 
 		/* USER CODE BEGIN 3 */
 	}
