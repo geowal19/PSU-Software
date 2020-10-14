@@ -10,6 +10,14 @@
 #include "gpio.h"
 #include "fmc.h"
 
+#include "adc.h"
+#include "analogue.h"
+#include "buttons.h"
+#include "dac.h"
+#include "gui.h"
+#include "sdram.h"
+#include "terminal.h"
+
 void System()
 {
     SYS_Start();
@@ -22,7 +30,7 @@ void System()
 
 void SYS_Start()
 {
-
+    TERM_Log("SYS_Start: System starting.\n");
 }
 
 void SYS_Loop()
