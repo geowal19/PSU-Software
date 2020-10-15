@@ -23,6 +23,11 @@ void DAC_Start()
 
 void DAC_SetValue(uint8_t device, uint16_t value)
 {
+    if(device != DAC_VLTS || device != DAC_AMPS)
+    {
+        return;
+    }
+
     uint8_t dac_data[] = {DAC_CMD_DATA, 0xFF & (value >> 8), value & 0xFF};
 
     HAL_I2C_Master_Transmit_DMA(&hi2c1, (uint16_t)dac_i2c_addr[device], dac_data, 3);
