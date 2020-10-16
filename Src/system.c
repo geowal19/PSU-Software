@@ -22,6 +22,7 @@ volatile SysVar sys_var = {0};
 
 volatile uint32_t btn_poll_stamp = 0;
 volatile uint32_t ana_poll_stamp = 0;
+volatile uint32_t dsp_poll_stamp = 0;
 
 void System()
 {
@@ -39,27 +40,35 @@ void SYS_Start()
 
 void SYS_Loop()
 {
+	uint32_t tick = 0;
+
 	while(1)
 	{
+		tick = HAL_GetTick();
+
 		// Check the buttons
-		if(HAL_GetTick() > (btn_poll_stamp + SYS_BTN_POLL_TIME_MS))
+		if(tick > (btn_poll_stamp + SYS_BTN_POLL_TIME_MS))
 		{
-			btn_poll_stamp = HAL_GetTick();
+			btn_poll_stamp = tick;
 
 			BTN_Poll();
 		}
 
 		// Update the analogue values
-		if(HAL_GetTick() > (ana_poll_stamp + SYS_ANA_POLL_TIME_MS))
+		if(tick > (ana_poll_stamp + SYS_ANA_POLL_TIME_MS))
 		{
-			ana_poll_stamp = HAL_GetTick();
+			ana_poll_stamp = tick;
 
 			sys_var.read_voltage = ANA_GetOutputVoltage();
 			sys_var.read_current = ANA_GetOutputCurrent();
 		}
 
+		// Update the display
+		if(tick > (dsp_poll_stamp + SYS_DSP_POLL_TIME_MS))
+		{
+			dsp_poll_stamp = tick;
 
-		
+		}
 
 		// Do some other stuff...
 	}
