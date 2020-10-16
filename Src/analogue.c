@@ -23,6 +23,9 @@ void ANA_Start()
 		Error_Handler();
 	}
 
+    // Disable the output
+    ANA_SetOutputRelay(false);
+
     // Start the DACs
     DAC_Start();
 

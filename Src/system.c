@@ -18,7 +18,10 @@
 #include "sdram.h"
 #include "terminal.h"
 
+volatile SysVar sys_var = {0};
+
 volatile uint32_t btn_poll_stamp = 0;
+volatile uint32_t ana_poll_stamp = 0;
 
 void System()
 {
@@ -30,6 +33,8 @@ void System()
 void SYS_Start()
 {
 	TERM_Log("SYS_Start: System starting.\n");
+
+	TERM_Log("SYS_Start: Starting analogue system.\n");
 }
 
 void SYS_Loop()
@@ -43,6 +48,18 @@ void SYS_Loop()
 
 			BTN_Poll();
 		}
+
+		// Update the analogue values
+		if(HAL_GetTick() > (ana_poll_stamp + SYS_ANA_POLL_TIME_MS))
+		{
+			ana_poll_stamp = HAL_GetTick();
+
+			sys_var.read_voltage = ANA_GetOutputVoltage();
+			sys_var.read_current = ANA_GetOutputCurrent();
+		}
+
+
+		
 
 		// Do some other stuff...
 	}
