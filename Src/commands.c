@@ -31,7 +31,8 @@ CMDContainer CMD_Parser(char * str)
         cmd.params[3], cmd.params[4], cmd.params[5], cmd.params[6]);
 
     // Get the command type
-    if(!strcmp(command, CMD_SET_VOLTS_STR)) cmd.cmd = CMD_SET_VOLTS;
+    if(!strcmp(command, CMD_SET_VLTS_STR)) cmd.cmd = CMD_SET_VLTS;
+    if(!strcmp(command, CMD_SET_AMPS_STR)) cmd.cmd = CMD_SET_AMPS;
 
 
     // All done

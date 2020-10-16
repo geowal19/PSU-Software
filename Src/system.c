@@ -127,6 +127,66 @@ void SYS_Loop()
 	}
 }
 
+void SYS_CommandExecuter()
+{
+	/*
+
+		Do nothing.
+
+	*/
+	if(command.cmd == CMD_NOP)
+	{
+
+	}
+
+	/*
+
+		Set the output voltage.
+
+	*/
+	if(command.cmd == CMD_SET_VLTS)
+	{
+		double voltage = atof((char*)command.params[0]);
+
+		if(voltage < SYS_MAX_VOLTAGE && voltage > SYS_MIN_VOLTAGE)
+		{
+			sys_var.output_voltage = voltage;
+
+			TERM_Send("OK\n");
+		}
+
+		else
+		{
+			TERM_Send("ERROR. Requested voltage outside of valid range.\n");
+		}
+	}
+
+	/*
+
+		Set the output current.
+
+	*/
+	if(command.cmd == CMD_SET_AMPS)
+	{
+		double current = atof((char*)command.params[0]);
+
+		if(current < SYS_MAX_CURRENT && current > SYS_MIN_CURRENT)
+		{
+			sys_var.output_current = current;
+
+			TERM_Send("OK\n");
+		}
+
+		else
+		{
+			TERM_Send("ERROR. Requested current outside of valid range.\n");
+		}
+	}
+
+	
+
+}
+
 void BTN_CallBack(uint32_t button_flags)
 {
 	asm ("NOP");
