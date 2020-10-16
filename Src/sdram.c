@@ -48,16 +48,16 @@ void SDRAM_Init()
 
 void SDRAM_Write(uint32_t loc, uint32_t * data, uint32_t n_words)
 {
-    uint32_t * addr = (uint32_t*)(SDRAM_BANK_ADDR + loc);
+	uint32_t * addr = (uint32_t*)(SDRAM_BANK_ADDR + loc);
 
-    // Copy in units of bytes
-    memcpy((uint8_t*)addr, (uint8_t*)data, n_words * sizeof(uint32_t));
+	// Copy in units of bytes
+	memcpy((uint8_t*)addr, (uint8_t*)data, n_words * sizeof(uint32_t));
 }
 
 void SDRAM_Read(uint32_t loc, uint32_t * data, uint32_t n_words)
 {
-    uint32_t * addr = (uint32_t*)(SDRAM_BANK_ADDR + loc);
+	uint32_t * addr = (uint32_t*)(SDRAM_BANK_ADDR + loc);
 
-    // Copy in units of bytes
-    memcpy((uint8_t*)data, (uint8_t*)addr, n_words * sizeof(uint32_t));
+	// Copy in units of bytes
+	memcpy((uint8_t*)data, (uint8_t*)addr, n_words * sizeof(uint32_t));
 }

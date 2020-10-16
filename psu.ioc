@@ -54,6 +54,7 @@ RCC.LPTIM1Freq_Value=120000000
 NVIC.SVCall_IRQn=true\:0\:0\:false\:false\:true\:false\:false
 PA14\ (JTCK/SWCLK).Signal=DEBUG_JTCK-SWCLK
 PA15\ (JTDI).Mode=JTAG_5_pins
+NVIC.EXTI1_IRQn=true\:0\:0\:false\:false\:true\:true\:true
 PA4.Mode=RGB888
 PF7.Signal=GPIO_Input
 SH.FMC_SDNWE.0=FMC_SDNWE,12b-sda1

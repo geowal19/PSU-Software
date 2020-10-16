@@ -79,6 +79,7 @@ void Error_Handler(void);
 #define BTN_2_GPIO_Port GPIOF
 #define ADC_DRDY_Pin GPIO_PIN_1
 #define ADC_DRDY_GPIO_Port GPIOC
+#define ADC_DRDY_EXTI_IRQn EXTI1_IRQn
 #define DISP_PWM_Pin GPIO_PIN_0
 #define DISP_PWM_GPIO_Port GPIOA
 #define ADC_SPI_SCLK_Pin GPIO_PIN_5

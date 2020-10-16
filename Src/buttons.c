@@ -7,36 +7,36 @@ volatile uint32_t button_state = 0;
 
 void BTN_Poll()
 {
-    uint32_t prev = button_state;
-    button_state = 0;
+	uint32_t prev = button_state;
+	button_state = 0;
 
-    // Get the current button states
-    for(uint8_t i = 0; i < BTN_N_BUTTONS; i++)
-    {
-        if((button_gpio_ports[i]->IDR & button_gpio_pins[i]) != 0x00U)
-        {
-            button_state |= (1 << i);
-        }
-    }
+	// Get the current button states
+	for(uint8_t i = 0; i < BTN_N_BUTTONS; i++)
+	{
+		if((button_gpio_ports[i]->IDR & button_gpio_pins[i]) != 0x00U)
+		{
+			button_state |= (1 << i);
+		}
+	}
 
-    uint32_t flags = 0;
+	uint32_t flags = 0;
 
-    // Check for rising edges
-    for(uint8_t i = 0; i < BTN_N_BUTTONS; i++)
-    {
-        if(!(prev & (1 << i)) && (button_state & (1 << i)))
-        {
-            flags |= (1 << i);
-        }
-    }
+	// Check for rising edges
+	for(uint8_t i = 0; i < BTN_N_BUTTONS; i++)
+	{
+		if(!(prev & (1 << i)) && (button_state & (1 << i)))
+		{
+			flags |= (1 << i);
+		}
+	}
 
-    if(flags)
-    {
-        BTN_CallBack(flags);
-    }
+	if(flags)
+	{
+		BTN_CallBack(flags);
+	}
 }
 
 __weak void BTN_CallBack(uint32_t button_flags)
 {
-    asm("NOP");
+	asm ("NOP");
 }
