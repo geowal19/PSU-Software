@@ -78,12 +78,13 @@ Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_uart_ex.c \
 Src/adc.c \
 Src/analogue.c \
 Src/buttons.c \
+Src/commands.c \
 Src/dac.c \
 Src/gui.c \
+Src/maths.c \
 Src/sdram.c \
 Src/system.c \
-Src/terminal.c \
-Src/maths.c
+Src/terminal.c
 
 
 # ASM sources

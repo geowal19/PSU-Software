@@ -17,6 +17,7 @@
 #include "gui.h"
 #include "sdram.h"
 #include "terminal.h"
+#include "commands.h"
 
 volatile SysVar sys_var = {0};
 
@@ -27,6 +28,9 @@ volatile uint32_t dsp_poll_stamp = 0;
 volatile double ana_vlts_current_val = 0;
 volatile double ana_amps_current_val = 0;
 volatile bool ana_output_en_current_val = false;
+
+volatile char term_string[TERM_BUFFER_LEN] = {0};
+volatile CMDContainer command = {0};
 
 void System()
 {
@@ -96,6 +100,23 @@ void SYS_Loop()
 			ana_output_en_current_val = sys_var.output_en;
 
 			ANA_SetOutputRelay(sys_var.output_en);
+		}
+
+		// If there's something has come in on the uart
+		if(term_string[0])
+		{
+			// Parse the command
+			command = CMD_Parser((char*)term_string);
+
+			// Reset the input string
+			memset((char*)term_string, 0, TERM_BUFFER_LEN);
+		}
+
+		// If there's a command to execute
+		if(command.cmd)
+		{
+			// Reset the command
+			command.cmd = CMD_NOP;
 		}
 
 		
