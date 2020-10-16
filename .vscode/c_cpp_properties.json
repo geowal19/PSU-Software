@@ -6,7 +6,9 @@
                 "${default}",
                 "${workspaceFolder}/Inc",
                 "${workspaceFolder}/Fonts",
-                "${workspaceFolder}/Drivers/**"
+                "${workspaceFolder}/Drivers/**",
+                "/usr/local/Cellar/arm-none-eabi-gcc/9-2019-q4-major/gcc/arm-none-eabi/include",
+                "/usr/local/Cellar/arm-none-eabi-gcc/9-2019-q4-major/gcc/lib/gcc/arm-none-eabi/9.2.1/include"
             ],
             "defines": [],
             "macFrameworkPath": [],
