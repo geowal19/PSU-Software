@@ -24,6 +24,10 @@ volatile uint32_t btn_poll_stamp = 0;
 volatile uint32_t ana_poll_stamp = 0;
 volatile uint32_t dsp_poll_stamp = 0;
 
+volatile double ana_vlts_current_val = 0;
+volatile double ana_amps_current_val = 0;
+volatile bool ana_output_en_current_val = false;
+
 void System()
 {
 	SYS_Start();
@@ -35,7 +39,7 @@ void SYS_Start()
 {
 	TERM_Log("SYS_Start: System starting.\n");
 
-	TERM_Log("SYS_Start: Starting analogue system.\n");
+	ANA_Start();
 }
 
 void SYS_Loop()
@@ -69,6 +73,34 @@ void SYS_Loop()
 			dsp_poll_stamp = tick;
 
 		}
+
+		// Update the output voltage
+		if(sys_var.output_voltage != ana_vlts_current_val)
+		{
+			ana_vlts_current_val = sys_var.output_voltage;
+
+			ANA_SetOutputVoltage(sys_var.output_voltage);
+		}
+
+		// Update the output current
+		if(sys_var.output_current != ana_amps_current_val)
+		{
+			ana_amps_current_val = sys_var.output_current;
+
+			ANA_SetOutputCurrent(sys_var.output_current);
+		}
+
+		// Update the relay
+		if(sys_var.output_en != ana_output_en_current_val)
+		{
+			ana_output_en_current_val = sys_var.output_en;
+
+			ANA_SetOutputRelay(sys_var.output_en);
+		}
+
+		
+
+		
 
 		// Do some other stuff...
 	}

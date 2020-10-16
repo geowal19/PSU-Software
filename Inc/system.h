@@ -11,6 +11,7 @@ typedef struct SysVarTag
     double output_current;
     double read_voltage;
     double read_current;
+    bool output_en;
 } SysVar;
 
 #define SYS_BTN_POLL_TIME_MS        10      // Button poll rate
