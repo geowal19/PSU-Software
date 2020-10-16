@@ -20,7 +20,7 @@ void ADC_StartConversion(uint8_t channel)
     if(channel == ADC_CHN_VLTS)
     {
         // Send the config
-        ADC_SPI_Transceive((uint8_t*)adc_vlts_reading_config, sizeof(adc_vlts_reading_config), (uint8_t[]){0}, 0);
+        ADC_SPI_Transceive((uint8_t*)adc_vlts_reading_config, (uint16_t)sizeof(adc_vlts_reading_config), (uint8_t[]){0}, 0);
 
         // Initiate the measure
         ADC_SPI_Transceive((uint8_t[]){ADC_CMD_SYNC}, 1, (uint8_t[]){0}, 0);
@@ -29,7 +29,7 @@ void ADC_StartConversion(uint8_t channel)
     if(channel == ADC_CHN_AMPS)
     {
         // Send the config
-        ADC_SPI_Transceive((uint8_t*)adc_amps_reading_config, sizeof(adc_amps_reading_config), (uint8_t[]){0}, 0);
+        ADC_SPI_Transceive((uint8_t*)adc_amps_reading_config, (uint16_t)sizeof(adc_amps_reading_config), (uint8_t[]){0}, 0);
 
         // Initiate the measure
         ADC_SPI_Transceive((uint8_t[]){ADC_CMD_SYNC}, 1, (uint8_t[]){0}, 0);
