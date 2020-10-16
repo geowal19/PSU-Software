@@ -24,6 +24,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "adc.h"
+#include "analogue.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -362,6 +363,8 @@ void TIM17_IRQHandler(void)
 	/* USER CODE END TIM17_IRQn 0 */
 	HAL_TIM_IRQHandler(&htim17);
 	/* USER CODE BEGIN TIM17_IRQn 1 */
+
+	ANA_TimerHandler();
 
 	/* USER CODE END TIM17_IRQn 1 */
 }

@@ -82,7 +82,8 @@ Src/dac.c \
 Src/gui.c \
 Src/sdram.c \
 Src/system.c \
-Src/terminal.c
+Src/terminal.c \
+Src/maths.c
 
 
 # ASM sources
