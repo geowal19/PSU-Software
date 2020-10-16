@@ -24,7 +24,10 @@
 #define BTN_SHIFT_BIT   0x00004000
 #define BTN_ONOFF_BIT   0x00008000
 
+enum {BTN_0, BTN_1, BTN_2, BTN_3, BTN_4, BTN_5, BTN_6, BTN_7, BTN_8, BTN_9, BTN_CLR, BTN_DP, BTN_V, BTN_A, BTN_SHIFT, BTN_ONOFF};
+
 void BTN_Poll();
+bool BTN_ReadButton(uint8_t button);
 void BTN_CallBack(uint32_t button_flags);
 
 #endif

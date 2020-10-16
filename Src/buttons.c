@@ -36,6 +36,18 @@ void BTN_Poll()
 	}
 }
 
+bool BTN_ReadButton(uint8_t button)
+{
+	if(button > BTN_ONOFF) return false;
+
+	if((button_gpio_ports[button]->IDR & button_gpio_pins[button]) != 0x00U)
+	{
+		return true;
+	}
+
+	return false;
+}
+
 __weak void BTN_CallBack(uint32_t button_flags)
 {
 	asm ("NOP");
