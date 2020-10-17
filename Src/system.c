@@ -50,13 +50,12 @@ void SYS_Start()
 
 	// Output 
 	ANA_Start();
-
-
+	
 	// Display inits
 	SDRAM_Init();
 	DISPLAY_Init();
-
-
+	GUI_Init();
+	sys_var.display_brightness = 50;
 }
 
 void SYS_Loop()
@@ -161,12 +160,6 @@ void SYS_Loop()
 
 			DISPLAY_SetBackLight(sys_var.display_brightness);
 		}
-
-		
-
-		
-
-		// Do some other stuff...
 	}
 }
 
