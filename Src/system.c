@@ -36,6 +36,7 @@ volatile CMDContainer command = {0};
 volatile uint32_t btn_flags = 0;
 
 volatile uint8_t display_brightness_var = 0;
+volatile bool display_refresh = true;
 
 void System()
 {
@@ -50,7 +51,7 @@ void SYS_Start()
 
 	// Output 
 	ANA_Start();
-	
+
 	// Display inits
 	SDRAM_Init();
 	DISPLAY_Init();
@@ -81,14 +82,17 @@ void SYS_Loop()
 
 			sys_var.read_voltage = ANA_GetOutputVoltage();
 			sys_var.read_current = ANA_GetOutputCurrent();
+
+			display_refresh = true;
 		}
 
 		// Update the display
-		if(tick > (dsp_poll_stamp + SYS_DSP_POLL_TIME_MS))
+		if(display_refresh)
 		{
-			dsp_poll_stamp = tick;
+			display_refresh = false;
 			
 			DISPLAY_Refresh();
+			GUI_UpdateDisplay(sys_var.output_voltage, sys_var.output_current, sys_var.read_voltage, sys_var.read_current, sys_var.output_en, (char*)sys_var.user_input);
 		}
 
 		// Update the output voltage
@@ -97,6 +101,8 @@ void SYS_Loop()
 			ana_vlts_current_val = sys_var.output_voltage;
 
 			ANA_SetOutputVoltage(sys_var.output_voltage);
+
+			display_refresh = true;
 		}
 
 		// Update the output current
@@ -105,6 +111,8 @@ void SYS_Loop()
 			ana_amps_current_val = sys_var.output_current;
 
 			ANA_SetOutputCurrent(sys_var.output_current);
+
+			display_refresh = true;
 		}
 
 		// Update the relay
@@ -113,6 +121,8 @@ void SYS_Loop()
 			ana_output_en_current_val = sys_var.output_en;
 
 			ANA_SetOutputRelay(sys_var.output_en);
+
+			display_refresh = true;
 		}
 
 		// If there's something has come in on the uart
@@ -128,6 +138,8 @@ void SYS_Loop()
 		// If there's a command to execute
 		if(command.cmd)
 		{
+			SYS_CommandExecuter();
+
 			// Reset the command
 			command.cmd = CMD_NOP;
 		}
