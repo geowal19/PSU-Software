@@ -2,6 +2,36 @@
 
 void SDRAM_Init()
 {
+	FMC_SDRAM_TimingTypeDef SdramTiming = {0};
+
+	/** Perform the SDRAM1 memory initialization sequence
+	 */
+	hsdram1.Instance = FMC_SDRAM_DEVICE;
+	/* hsdram1.Init */
+	hsdram1.Init.SDBank = FMC_SDRAM_BANK1;
+	hsdram1.Init.ColumnBitsNumber = FMC_SDRAM_COLUMN_BITS_NUM_8;
+	hsdram1.Init.RowBitsNumber = FMC_SDRAM_ROW_BITS_NUM_12;
+	hsdram1.Init.MemoryDataWidth = FMC_SDRAM_MEM_BUS_WIDTH_16;
+	hsdram1.Init.InternalBankNumber = FMC_SDRAM_INTERN_BANKS_NUM_4;
+	hsdram1.Init.CASLatency = FMC_SDRAM_CAS_LATENCY_3;
+	hsdram1.Init.WriteProtection = FMC_SDRAM_WRITE_PROTECTION_DISABLE;
+	hsdram1.Init.SDClockPeriod = FMC_SDRAM_CLOCK_PERIOD_3;
+	hsdram1.Init.ReadBurst = FMC_SDRAM_RBURST_DISABLE;
+	hsdram1.Init.ReadPipeDelay = FMC_SDRAM_RPIPE_DELAY_2;
+	/* SdramTiming */
+	SdramTiming.LoadToActiveDelay = 2;
+	SdramTiming.ExitSelfRefreshDelay = 7;
+	SdramTiming.SelfRefreshTime = 5;
+	SdramTiming.RowCycleDelay = 7;
+	SdramTiming.WriteRecoveryTime = 3;
+	SdramTiming.RPDelay = 3;
+	SdramTiming.RCDDelay = 3;
+
+	if (HAL_SDRAM_Init(&hsdram1, &SdramTiming) != HAL_OK)
+	{
+		Error_Handler( );
+	}
+
 	FMC_SDRAM_CommandTypeDef Command;
 
 	// Step 1:  Configure a clock configuration enable command
@@ -48,7 +78,7 @@ void SDRAM_Init()
 
 void SDRAM_Write(uint32_t loc, uint32_t * data, uint32_t n_words)
 {
-	uint32_t * addr = (uint32_t*)(SDRAM_BANK_ADDR + loc);
+	uint32_t * addr = (uint32_t*)(SDRAM_ADDR + loc);
 
 	// Copy in units of bytes
 	memcpy((uint8_t*)addr, (uint8_t*)data, n_words * sizeof(uint32_t));
@@ -56,7 +86,7 @@ void SDRAM_Write(uint32_t loc, uint32_t * data, uint32_t n_words)
 
 void SDRAM_Read(uint32_t loc, uint32_t * data, uint32_t n_words)
 {
-	uint32_t * addr = (uint32_t*)(SDRAM_BANK_ADDR + loc);
+	uint32_t * addr = (uint32_t*)(SDRAM_ADDR + loc);
 
 	// Copy in units of bytes
 	memcpy((uint8_t*)data, (uint8_t*)addr, n_words * sizeof(uint32_t));

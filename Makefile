@@ -80,6 +80,7 @@ Src/analogue.c \
 Src/buttons.c \
 Src/commands.c \
 Src/dac.c \
+Src/display.c \
 Src/gui.c \
 Src/maths.c \
 Src/sdram.c \

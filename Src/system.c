@@ -14,6 +14,7 @@
 #include "analogue.h"
 #include "buttons.h"
 #include "dac.h"
+#include "display.h"
 #include "gui.h"
 #include "sdram.h"
 #include "terminal.h"
@@ -43,7 +44,15 @@ void SYS_Start()
 {
 	TERM_Log("SYS_Start: System starting.\n");
 
+	// Output 
 	ANA_Start();
+
+
+	// Display inits
+	SDRAM_Init();
+	DISPLAY_Init();
+
+
 }
 
 void SYS_Loop()
@@ -75,7 +84,8 @@ void SYS_Loop()
 		if(tick > (dsp_poll_stamp + SYS_DSP_POLL_TIME_MS))
 		{
 			dsp_poll_stamp = tick;
-
+			
+			DISPLAY_Refresh();
 		}
 
 		// Update the output voltage
