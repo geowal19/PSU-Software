@@ -197,9 +197,14 @@ void SYS_CommandExecuter()
 
 }
 
+void SYS_ButtonHandler(uint32_t button_press)
+{
+	
+}
+
 void BTN_CallBack(uint32_t button_flags)
 {
-	asm ("NOP");
+	SYS_ButtonHandler(button_flags);
 }
 
 void TERM_Callback(char * str)

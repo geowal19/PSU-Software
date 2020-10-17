@@ -7,6 +7,11 @@ volatile uint32_t button_state = 0;
 
 void BTN_Poll()
 {
+	// Extra shifting for shift button press
+	uint8_t shift_state = BTN_ReadButton(BTN_SHIFT);
+	if(shift_state) shift_state = 16;
+
+	// Remember the previous state
 	uint32_t prev = button_state;
 	button_state = 0;
 
@@ -26,10 +31,11 @@ void BTN_Poll()
 	{
 		if(!(prev & (1 << i)) && (button_state & (1 << i)))
 		{
-			flags |= (1 << i);
+			flags |= (1 << (i + shift_state));
 		}
 	}
 
+	// Send the flags if there are any
 	if(flags)
 	{
 		BTN_CallBack(flags);

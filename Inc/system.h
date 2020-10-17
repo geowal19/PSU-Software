@@ -31,5 +31,6 @@ void SYS_Loop();
 
 // Helper functions
 void SYS_CommandExecuter();
+void SYS_ButtonHandler(uint32_t button_press);
 
 #endif
