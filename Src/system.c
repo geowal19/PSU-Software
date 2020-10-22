@@ -91,8 +91,10 @@ void SYS_Loop()
 		{
 			display_refresh = false;
 			
+			GUI_UpdateDisplay(sys_var.output_voltage, sys_var.output_current, 
+				sys_var.read_voltage, sys_var.read_current, sys_var.output_en, 
+				(char*)sys_var.user_input);
 			DISPLAY_Refresh();
-			GUI_UpdateDisplay(sys_var.output_voltage, sys_var.output_current, sys_var.read_voltage, sys_var.read_current, sys_var.output_en, (char*)sys_var.user_input);
 		}
 
 		// Update the output voltage

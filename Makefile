@@ -85,7 +85,8 @@ Src/gui.c \
 Src/maths.c \
 Src/sdram.c \
 Src/system.c \
-Src/terminal.c
+Src/terminal.c \
+Src/uart_printf.c
 
 
 # ASM sources

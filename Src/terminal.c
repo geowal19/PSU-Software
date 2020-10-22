@@ -1,5 +1,7 @@
 #include "terminal.h"
 
+#include "uart_printf.h"
+
 volatile uint8_t term_uart_buffer[TERM_BUFFER_LEN];
 
 void TERM_Start()
@@ -30,6 +32,14 @@ void TERM_Log(char * str)
 #endif
 }
 
+void TERM_Print(const char * format, ... )
+{
+	va_list _args;
+
+	va_start(_args, format);
+
+	__uart_printf(&TERM_UART_PERPH, format, _args);
+}
 
 __weak void TERM_Callback(char * str)
 {
