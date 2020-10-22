@@ -33,7 +33,10 @@ CMDContainer CMD_Parser(char * str)
     // Get the command type
     if(!strcmp(command, CMD_SET_VLTS_STR)) cmd.cmd = CMD_SET_VLTS;
     if(!strcmp(command, CMD_SET_AMPS_STR)) cmd.cmd = CMD_SET_AMPS;
-
+    if(!strcmp(command, CMD_GET_VLTS_STR)) cmd.cmd = CMD_GET_VLTS;
+    if(!strcmp(command, CMD_GET_AMPS_STR)) cmd.cmd = CMD_GET_AMPS;
+    if(!strcmp(command, CMD_GET_OUT_STATE_STR)) cmd.cmd = CMD_GET_OUT_STATE;
+    if(!strcmp(command, CMD_SET_OUT_STATE_STR)) cmd.cmd = CMD_SET_OUT_STATE;
 
     // All done
     return cmd;

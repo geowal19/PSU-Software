@@ -233,7 +233,57 @@ void SYS_CommandExecuter()
 		}
 	}
 
-	
+	/*
+
+		Get the output voltage.
+
+	*/
+	if(command.cmd == CMD_GET_VLTS)
+	{
+		TERM_Print("%f\n", sys_var.output_voltage);
+	}
+
+	/*
+
+		Get the output current.
+
+	*/
+	if(command.cmd == CMD_GET_AMPS)
+	{
+		TERM_Print("%f\n", sys_var.output_current);
+	}
+
+	/*
+
+		Get the output state.
+
+	*/
+	if(command.cmd == CMD_GET_OUT_STATE)
+	{
+		TERM_Print("%u\n", sys_var.output_en);
+	}
+
+	/*
+
+		Set the output state.
+
+	*/
+	if(command.cmd == CMD_SET_OUT_STATE)
+	{
+		uint8_t state = atoi((char*)command.params[0]);
+
+		if(state)
+		{
+			sys_var.output_en = true;			
+		}
+
+		else
+		{
+			sys_var.output_en = false;
+		}
+
+		TERM_Send("OK\n");
+	}	
 
 }
 
