@@ -30,6 +30,16 @@ CMDContainer CMD_Parser(char * str)
         command, cmd.params[0], cmd.params[1], cmd.params[2], 
         cmd.params[3], cmd.params[4], cmd.params[5], cmd.params[6]);
 
+    // Count the number of parameters
+    for(uint8_t i = 0; i < 7; i++)
+    {
+        if(strlen(cmd.params[i]) == 0)
+        {
+            cmd.n_params = i;
+            break;
+        }
+    }
+
     // Get the command type
     if(!strcmp(command, CMD_SET_VLTS_STR)) cmd.cmd = CMD_SET_VLTS;
     if(!strcmp(command, CMD_SET_AMPS_STR)) cmd.cmd = CMD_SET_AMPS;
@@ -37,6 +47,7 @@ CMDContainer CMD_Parser(char * str)
     if(!strcmp(command, CMD_GET_AMPS_STR)) cmd.cmd = CMD_GET_AMPS;
     if(!strcmp(command, CMD_GET_OUT_STATE_STR)) cmd.cmd = CMD_GET_OUT_STATE;
     if(!strcmp(command, CMD_SET_OUT_STATE_STR)) cmd.cmd = CMD_SET_OUT_STATE;
+    if(!strcmp(command, CMD_SET_BRIGHTNESS_STR)) cmd.cmd = CMD_SET_BRIGHTNESS;
 
     // All done
     return cmd;

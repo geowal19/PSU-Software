@@ -196,18 +196,27 @@ void SYS_CommandExecuter()
 	*/
 	if(command.cmd == CMD_SET_VLTS)
 	{
-		double voltage = atof((char*)command.params[0]);
-
-		if(voltage < SYS_MAX_VOLTAGE && voltage > SYS_MIN_VOLTAGE)
+		// Number of params check
+		if(command.n_params < 1)
 		{
-			sys_var.output_voltage = voltage;
+			double voltage = atof((char*)command.params[0]);
 
-			TERM_Send("OK\n");
+			if(voltage < SYS_MAX_VOLTAGE && voltage > SYS_MIN_VOLTAGE)
+			{
+				sys_var.output_voltage = voltage;
+
+				TERM_Send("OK.\n");
+			}
+
+			else
+			{
+				TERM_Send("ERROR. Requested voltage outside of valid range.\n");
+			}
 		}
 
 		else
 		{
-			TERM_Send("ERROR. Requested voltage outside of valid range.\n");
+			TERM_Send("ERROR. Not enough parameters.\n");
 		}
 	}
 
@@ -218,18 +227,27 @@ void SYS_CommandExecuter()
 	*/
 	if(command.cmd == CMD_SET_AMPS)
 	{
-		double current = atof((char*)command.params[0]);
-
-		if(current < SYS_MAX_CURRENT && current > SYS_MIN_CURRENT)
+		// Number of params check
+		if(command.n_params < 1)
 		{
-			sys_var.output_current = current;
+			double current = atof((char*)command.params[0]);
 
-			TERM_Send("OK\n");
+			if(current < SYS_MAX_CURRENT && current > SYS_MIN_CURRENT)
+			{
+				sys_var.output_current = current;
+
+				TERM_Send("OK.\n");
+			}
+
+			else
+			{
+				TERM_Send("ERROR. Requested current outside of valid range.\n");
+			}
 		}
 
 		else
 		{
-			TERM_Send("ERROR. Requested current outside of valid range.\n");
+			TERM_Send("ERROR. Not enough parameters.\n");
 		}
 	}
 
@@ -270,21 +288,60 @@ void SYS_CommandExecuter()
 	*/
 	if(command.cmd == CMD_SET_OUT_STATE)
 	{
-		uint8_t state = atoi((char*)command.params[0]);
-
-		if(state)
+		// Number of params check
+		if(command.n_params < 1)
 		{
-			sys_var.output_en = true;			
+			uint8_t state = atoi((char*)command.params[0]);
+
+			if(state)
+			{
+				sys_var.output_en = true;			
+			}
+
+			else
+			{
+				sys_var.output_en = false;
+			}
+
+			TERM_Send("OK.\n");
 		}
 
 		else
 		{
-			sys_var.output_en = false;
+			TERM_Send("ERROR. Not enough parameters.\n");
+		}
+	}
+
+	/*
+
+		Set the display brightness.
+
+	*/
+	if(command.cmd == CMD_SET_BRIGHTNESS)
+	{
+		// Number of params check
+		if(command.n_params < 1)
+		{
+			uint8_t brightness = atoi((char*)command.params[0]);
+
+			if(brightness > 100)
+			{
+				sys_var.display_brightness = 100;			
+			}
+
+			else
+			{
+				sys_var.display_brightness = brightness;
+			}
+
+			TERM_Send("OK.\n");
 		}
 
-		TERM_Send("OK\n");
+		else
+		{
+			TERM_Send("ERROR. Not enough parameters.\n");
+		}
 	}	
-
 }
 
 void SYS_ButtonHandler(uint32_t button_press)
