@@ -38,11 +38,11 @@ void ADC_StartConversion(uint8_t channel)
 
 uint16_t ADC_ReadValue()
 {
-	uint16_t result = 0;
+	int16_t result = 0;
 
 	ADC_SPI_Transceive((uint8_t[]){ADC_CMD_RDTA}, 1, (uint8_t*)&result, 2);
 
-	return result;
+	return (uint16_t)(result + 32768);
 }
 
 void ADC_Handler()
