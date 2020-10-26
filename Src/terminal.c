@@ -7,7 +7,8 @@ volatile uint8_t term_uart_buffer[TERM_BUFFER_LEN];
 void TERM_Start()
 {
 	memset((char *)term_uart_buffer, 0, TERM_BUFFER_LEN);
-	HAL_UART_Receive_DMA(&TERM_UART_PERPH, (uint8_t *)term_uart_buffer, TERM_BUFFER_LEN);
+	HAL_UART_Abort_IT(&TERM_UART_PERPH);
+	HAL_UART_Receive_IT(&TERM_UART_PERPH, (uint8_t *)term_uart_buffer, TERM_BUFFER_LEN);
 }
 
 void TERM_Poll()

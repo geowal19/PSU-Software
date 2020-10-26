@@ -38,6 +38,8 @@ volatile uint32_t btn_flags = 0;
 volatile uint8_t display_brightness_var = 0;
 volatile bool display_refresh = true;
 
+#define LEN 100
+
 void System()
 {
 	SYS_Start();
@@ -48,16 +50,15 @@ void System()
 void SYS_Start()
 {
 	TERM_Start();
-	/*
+
 	// Output
-	ANA_Start();
+	//ANA_Start();
 
 	// Display inits
 	SDRAM_Init();
 	DISPLAY_Init();
 	GUI_Init();
 	sys_var.display_brightness = 50;
-*/
 }
 
 void SYS_Loop()
@@ -91,18 +92,19 @@ void SYS_Loop()
 
 			display_refresh = true;
 		}
-
+	*/
 		// Update the display
 		if (display_refresh)
 		{
 			display_refresh = false;
-
+			/*
 			GUI_UpdateDisplay(sys_var.output_voltage, sys_var.output_current,
 							  sys_var.read_voltage, sys_var.read_current, sys_var.output_en,
 							  (char *)sys_var.user_input);
+*/
 			DISPLAY_Refresh();
 		}
-
+		/*
 		// Update the output voltage
 		if (sys_var.output_voltage != ana_vlts_current_val)
 		{
@@ -172,7 +174,7 @@ void SYS_Loop()
 			// Reset the flags
 			btn_flags = 0;
 		}
-		/*
+
 		// Change in display brightness
 		if (sys_var.display_brightness != display_brightness_var)
 		{
@@ -180,7 +182,6 @@ void SYS_Loop()
 
 			DISPLAY_SetBackLight(sys_var.display_brightness);
 		}
-		*/
 	}
 }
 
@@ -265,7 +266,7 @@ void SYS_CommandExecuter()
 	*/
 	if (command.cmd == CMD_GET_VLTS)
 	{
-		TERM_Print("%f\n", sys_var.output_voltage);
+		TERM_Print("%fV\n", sys_var.output_voltage);
 	}
 
 	/*
@@ -275,7 +276,7 @@ void SYS_CommandExecuter()
 	*/
 	if (command.cmd == CMD_GET_AMPS)
 	{
-		TERM_Print("%f\n", sys_var.output_current);
+		TERM_Print("%fA\n", sys_var.output_current);
 	}
 
 	/*
