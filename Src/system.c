@@ -42,19 +42,13 @@ void System()
 {
 	SYS_Start();
 
-	//SYS_Loop();
+	SYS_Loop();
 }
 
 void SYS_Start()
 {
 	TERM_Start();
-
-	TERM_Print("PSU Starting.\n");
-
 	/*
-
-	TERM_Log("SYS_Start: System starting.\n");
-
 	// Output
 	ANA_Start();
 
@@ -63,16 +57,21 @@ void SYS_Start()
 	DISPLAY_Init();
 	GUI_Init();
 	sys_var.display_brightness = 50;
-	*/
+*/
 }
 
 void SYS_Loop()
 {
+	TERM_Print("PSU OK\n");
+
 	uint32_t tick = 0;
 
 	while (1)
 	{
 		tick = HAL_GetTick();
+
+		// Poll the terminal
+		TERM_Poll();
 
 		// Check the buttons
 		if (tick > (btn_poll_stamp + SYS_BTN_POLL_TIME_MS))
@@ -81,7 +80,7 @@ void SYS_Loop()
 
 			BTN_Poll();
 		}
-
+		/*
 		// Update the analogue values
 		if (tick > (ana_poll_stamp + SYS_ANA_POLL_TIME_MS))
 		{
@@ -133,7 +132,7 @@ void SYS_Loop()
 
 			display_refresh = true;
 		}
-
+*/
 		// If there's something has come in on the uart
 		if (term_string[0])
 		{
@@ -170,10 +169,10 @@ void SYS_Loop()
 				}
 			}
 
-			// Reset the relevant flag
-			btn_flags &= ~mask;
+			// Reset the flags
+			btn_flags = 0;
 		}
-
+		/*
 		// Change in display brightness
 		if (sys_var.display_brightness != display_brightness_var)
 		{
@@ -181,6 +180,7 @@ void SYS_Loop()
 
 			DISPLAY_SetBackLight(sys_var.display_brightness);
 		}
+		*/
 	}
 }
 

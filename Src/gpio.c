@@ -59,23 +59,22 @@ void MX_GPIO_Init(void)
 
 	/*Configure GPIO pins : PCPin PCPin PCPin PCPin
 	                         PCPin */
-	GPIO_InitStruct.Pin = BTN_AMPS_Pin | BTN_CANCEL_Pin | BTN_0_Pin | BTN_6_Pin
-	                      | BTN_DP_Pin;
+	GPIO_InitStruct.Pin = BTN_AMPS_Pin | BTN_CANCEL_Pin | BTN_0_Pin | BTN_6_Pin | BTN_DP_Pin;
 	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Pull = GPIO_PULLDOWN;
 	HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
 	/*Configure GPIO pin : PtPin */
 	GPIO_InitStruct.Pin = OUTPUT_RELAY_EN_Pin;
 	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Pull = GPIO_PULLDOWN;
 	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
 	HAL_GPIO_Init(OUTPUT_RELAY_EN_GPIO_Port, &GPIO_InitStruct);
 
 	/*Configure GPIO pins : PFPin PFPin PFPin */
 	GPIO_InitStruct.Pin = BTN_3_Pin | BTN_9_Pin | BTN_2_Pin;
 	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Pull = GPIO_PULLDOWN;
 	HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);
 
 	/*Configure GPIO pin : PtPin */
@@ -87,19 +86,19 @@ void MX_GPIO_Init(void)
 	/*Configure GPIO pins : PBPin PBPin PBPin */
 	GPIO_InitStruct.Pin = BTN_VOLTS_Pin | BTN_5_Pin | BTN_8_Pin;
 	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Pull = GPIO_PULLDOWN;
 	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 	/*Configure GPIO pins : PDPin PDPin PDPin */
 	GPIO_InitStruct.Pin = BTN_1_Pin | BTN_4_Pin | BTN_7_Pin;
 	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Pull = GPIO_PULLDOWN;
 	HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
 	/*Configure GPIO pins : PGPin PGPin */
 	GPIO_InitStruct.Pin = BTN_OUT_CONT_Pin | BTN_SHIFT_Pin;
 	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Pull = GPIO_PULLDOWN;
 	HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
 
 	/*Configure GPIO pin : PtPin */
@@ -112,7 +111,6 @@ void MX_GPIO_Init(void)
 	/* EXTI interrupt init*/
 	HAL_NVIC_SetPriority(EXTI1_IRQn, 0, 0);
 	HAL_NVIC_EnableIRQ(EXTI1_IRQn);
-
 }
 
 /* USER CODE BEGIN 2 */
