@@ -60,14 +60,13 @@ void MX_USART1_UART_Init(void)
 	{
 		Error_Handler();
 	}
-
 }
 
-void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
+void HAL_UART_MspInit(UART_HandleTypeDef *uartHandle)
 {
 
 	GPIO_InitTypeDef GPIO_InitStruct = {0};
-	if(uartHandle->Instance == USART1)
+	if (uartHandle->Instance == USART1)
 	{
 		/* USER CODE BEGIN USART1_MspInit 0 */
 
@@ -104,7 +103,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
 			Error_Handler();
 		}
 
-		__HAL_LINKDMA(uartHandle,hdmarx,hdma_usart1_rx);
+		__HAL_LINKDMA(uartHandle, hdmarx, hdma_usart1_rx);
 
 		/* USART1_TX Init */
 		hdma_usart1_tx.Instance = DMA1_Stream1;
@@ -122,7 +121,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
 			Error_Handler();
 		}
 
-		__HAL_LINKDMA(uartHandle,hdmatx,hdma_usart1_tx);
+		__HAL_LINKDMA(uartHandle, hdmatx, hdma_usart1_tx);
 
 		/* USART1 interrupt Init */
 		HAL_NVIC_SetPriority(USART1_IRQn, 0, 0);
@@ -133,10 +132,10 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
 	}
 }
 
-void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
+void HAL_UART_MspDeInit(UART_HandleTypeDef *uartHandle)
 {
 
-	if(uartHandle->Instance == USART1)
+	if (uartHandle->Instance == USART1)
 	{
 		/* USER CODE BEGIN USART1_MspDeInit 0 */
 
