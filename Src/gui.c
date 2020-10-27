@@ -4,8 +4,8 @@
 #include "display.h"
 #include "background.h"
 
-const uint8_t *font_chars[] = {char_0, char_1, char_2, char_3, char_4, char_5, char_6, char_7, char_8, char_9, char_dp};
-const uint32_t font_char_widths[] = {67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 27};
+const uint8_t *font_chars[] = {char_0, char_1, char_2, char_3, char_4, char_5, char_6, char_7, char_8, char_9, char_dp, char_on, char_off};
+const uint32_t font_char_widths[] = {67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 27, 190, 190};
 void GUI_Init()
 {
     //memcpy((uint8_t *)DISPLAY_GetBuffer(), (uint8_t *)background, 800 * 480);
@@ -89,6 +89,25 @@ void GUI_UpdateDisplay(double output_voltage, double output_current, double read
         // Draw blanking first
         GUI_DrawRectangle(GUI_USER_INPUT_LOC_X, GUI_USER_INPUT_LOC_Y, GUI_USER_INPUT_LOC_X + (GUI_USER_INPUT_MAX_LEN * font_char_widths[0]), GUI_USER_INPUT_LOC_Y + GUI_ASCII_HEIGHT, 0);
     }
+
+    /*
+
+        OUTPUT STATE
+
+    */
+
+    // Check the length
+    if (output_en)
+    {
+        // Draw the user input string
+        GUI_DrawChar(GUI_OUTPUT_STATE_LOC_X, GUI_OUTPUT_STATE_LOC_Y, 'n');
+    }
+
+    else
+    {
+        // Draw the user input string
+        GUI_DrawChar(GUI_OUTPUT_STATE_LOC_X, GUI_OUTPUT_STATE_LOC_Y, 'f');
+    }
 }
 
 uint32_t GUI_DrawChar(uint32_t x, uint32_t y, char c)
@@ -100,6 +119,18 @@ uint32_t GUI_DrawChar(uint32_t x, uint32_t y, char c)
     {
         ptr = (uint8_t *)font_chars[10];
         width = font_char_widths[10];
+    }
+
+    else if (c == 'n')
+    {
+        ptr = (uint8_t *)font_chars[11];
+        width = font_char_widths[11];
+    }
+
+    else if (c == 'f')
+    {
+        ptr = (uint8_t *)font_chars[12];
+        width = font_char_widths[12];
     }
 
     else

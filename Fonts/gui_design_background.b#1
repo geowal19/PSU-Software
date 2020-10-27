@@ -81,7 +81,6 @@
 <wire x1="54" y1="-32.4" x2="54" y2="32.4" width="0.15" layer="20"/>
 <wire x1="54" y1="32.4" x2="-54" y2="32.4" width="0.15" layer="20"/>
 <wire x1="-54" y1="32.4" x2="-54" y2="-32.4" width="0.15" layer="20"/>
-<text x="3" y="-14" size="3" layer="21" font="vector">OUTPUT STATE</text>
 </plain>
 <libraries>
 </libraries>
