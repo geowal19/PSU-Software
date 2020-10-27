@@ -16,9 +16,82 @@ void GUI_Init()
 
 void GUI_UpdateDisplay(double output_voltage, double output_current, double read_voltage, double read_current, bool output_en, char *user_input)
 {
+    char str[10] = {0};
+
+    /*
+
+        Set voltage
+
+    */
+
+    sprintf(str, "%.3f", output_voltage);
+    // Make sure it's only 5 chars
+    str[5] = 0;
+    // Draw the string
+    GUI_DrawString(GUI_OUTPUT_VLTS_LOC_X, GUI_OUTPUT_VLTS_LOC_Y, str);
+
+    /*
+
+        Set current
+
+    */
+
+    sprintf(str, "%.3f", output_current);
+    // Make sure it's only 5 chars
+    str[5] = 0;
+    // Draw the string
+    GUI_DrawString(GUI_OUTPUT_AMPS_LOC_X, GUI_OUTPUT_AMPS_LOC_Y, str);
+
+    /*
+
+        Read voltage
+
+    */
+
+    sprintf(str, "%.3f", read_voltage);
+    // Make sure it's only 5 chars
+    str[5] = 0;
+    // Draw the string
+    GUI_DrawString(GUI_READ_VLTS_LOC_X, GUI_READ_VLTS_LOC_Y, str);
+
+    /*
+
+        Read current
+
+    */
+
+    sprintf(str, "%.3f", read_current);
+    // Make sure it's only 5 chars
+    str[5] = 0;
+    // Draw the string
+    GUI_DrawString(GUI_READ_AMPS_LOC_X, GUI_READ_AMPS_LOC_Y, str);
+
+    /*
+
+        USER INPUT
+
+    */
+
+    // Check the length
+    if (strlen(user_input) > GUI_USER_INPUT_MAX_LEN)
+    {
+        user_input[GUI_USER_INPUT_MAX_LEN] = 0;
+    }
+
+    if (strlen(user_input))
+    {
+        // Draw the user input string
+        GUI_DrawString(GUI_USER_INPUT_LOC_X, GUI_USER_INPUT_LOC_Y, user_input);
+    }
+
+    else
+    {
+        // Draw blanking first
+        GUI_DrawRectangle(GUI_USER_INPUT_LOC_X, GUI_USER_INPUT_LOC_Y, GUI_USER_INPUT_LOC_X + (GUI_USER_INPUT_MAX_LEN * font_char_widths[0]), GUI_USER_INPUT_LOC_Y + GUI_ASCII_HEIGHT, 0);
+    }
 }
 
-void GUI_DrawChar(uint32_t x, uint32_t y, char c)
+uint32_t GUI_DrawChar(uint32_t x, uint32_t y, char c)
 {
     uint8_t *ptr = NULL;
     uint32_t width = 0;
@@ -34,7 +107,7 @@ void GUI_DrawChar(uint32_t x, uint32_t y, char c)
         // Character is out of range
         if ((c - GUI_ASCII_OFFSET) > 10)
         {
-            return;
+            return 0;
         }
 
         ptr = (uint8_t *)font_chars[c - GUI_ASCII_OFFSET];
@@ -46,6 +119,20 @@ void GUI_DrawChar(uint32_t x, uint32_t y, char c)
         uint8_t *disp_ptr = (uint8_t *)(DISP_BUFFER + ((i + y) * GUI_SCREEN_WIDTH) + x);
         memcpy((uint8_t *)disp_ptr, &ptr[width * i], width);
     }
+
+    return width;
+}
+
+uint32_t GUI_DrawString(uint32_t x, uint32_t y, char *str)
+{
+    uint32_t x_ptr = x;
+
+    for (uint8_t i = 0; i < strlen(str); i++)
+    {
+        x_ptr += GUI_ASCII_SPACING + GUI_DrawChar(x_ptr, y, str[i]);
+    }
+
+    return x_ptr;
 }
 
 void GUI_DrawRectangle(uint32_t x0, uint32_t y0, uint32_t x1, uint32_t y1, uint8_t pix_val)

@@ -97,11 +97,11 @@ void SYS_Loop()
 		if (display_refresh)
 		{
 			display_refresh = false;
-			/*
+
 			GUI_UpdateDisplay(sys_var.output_voltage, sys_var.output_current,
 							  sys_var.read_voltage, sys_var.read_current, sys_var.output_en,
 							  (char *)sys_var.user_input);
-*/
+
 			DISPLAY_Refresh();
 		}
 		/*
@@ -205,7 +205,7 @@ void SYS_CommandExecuter()
 	if (command.cmd == CMD_SET_VLTS)
 	{
 		// Number of params check
-		if (command.n_params < 1)
+		if (command.n_params)
 		{
 			double voltage = atof((char *)command.params[0]);
 
@@ -236,7 +236,7 @@ void SYS_CommandExecuter()
 	if (command.cmd == CMD_SET_AMPS)
 	{
 		// Number of params check
-		if (command.n_params < 1)
+		if (command.n_params)
 		{
 			double current = atof((char *)command.params[0]);
 
@@ -266,7 +266,7 @@ void SYS_CommandExecuter()
 	*/
 	if (command.cmd == CMD_GET_VLTS)
 	{
-		TERM_Print("%fV\n", sys_var.output_voltage);
+		TERM_Print("%fV\n", sys_var.read_voltage);
 	}
 
 	/*
@@ -276,7 +276,7 @@ void SYS_CommandExecuter()
 	*/
 	if (command.cmd == CMD_GET_AMPS)
 	{
-		TERM_Print("%fA\n", sys_var.output_current);
+		TERM_Print("%fA\n", sys_var.read_current);
 	}
 
 	/*
@@ -354,6 +354,8 @@ void SYS_CommandExecuter()
 
 void SYS_ButtonHandler(uint32_t button_press)
 {
+	double temp = 0;
+
 	switch (button_press)
 	{
 	case BTN_0_FLAG:
@@ -437,18 +439,22 @@ void SYS_ButtonHandler(uint32_t button_press)
 		}
 		break;
 
-	case BTN_V_FLAG:
-		sys_var.output_voltage = (double)atof((char *)sys_var.user_input);
+	case BTN_A_FLAG:
+		temp = (double)atof((char *)sys_var.user_input);
+		if (temp < SYS_MAX_VOLTAGE && temp > 0)
+		{
+			sys_var.output_voltage = temp;
+		}
 		memset((char *)sys_var.user_input, 0, SYS_USER_INPUT_LEN);
-
-		GUI_DrawChar(200, 200, '0');
 		break;
 
-	case BTN_A_FLAG:
-		sys_var.output_current = (double)atof((char *)sys_var.user_input);
+	case BTN_V_FLAG:
+		temp = (double)atof((char *)sys_var.user_input);
+		if (temp < SYS_MAX_CURRENT && temp > 0)
+		{
+			sys_var.output_current = temp;
+		}
 		memset((char *)sys_var.user_input, 0, SYS_USER_INPUT_LEN);
-
-		GUI_DrawChar(200, 200, '1');
 		break;
 
 	case BTN_ONOFF_FLAG:
@@ -509,11 +515,11 @@ void SYS_ButtonHandler(uint32_t button_press)
 
 		break;
 
-	case BTN_S_V_FLAG:
+	case BTN_S_A_FLAG:
 		sys_var.output_voltage = SYS_MAX_VOLTAGE;
 		break;
 
-	case BTN_S_A_FLAG:
+	case BTN_S_V_FLAG:
 		sys_var.output_current = SYS_MAX_CURRENT;
 		break;
 

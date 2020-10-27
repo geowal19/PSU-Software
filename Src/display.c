@@ -10,13 +10,13 @@ void DISPLAY_Init()
 	hltdc.Init.VSPolarity = LTDC_VSPOLARITY_AL;
 	hltdc.Init.DEPolarity = LTDC_DEPOLARITY_AL;
 	hltdc.Init.PCPolarity = LTDC_PCPOLARITY_IPC;
-	hltdc.Init.HorizontalSync = 5;
+	hltdc.Init.HorizontalSync = 4;
 	hltdc.Init.VerticalSync = 5;
-	hltdc.Init.AccumulatedHBP = 51; //45
+	hltdc.Init.AccumulatedHBP = 50; //45
 	hltdc.Init.AccumulatedVBP = 23;
-	hltdc.Init.AccumulatedActiveW = 851; // 845
+	hltdc.Init.AccumulatedActiveW = 880; // 845
 	hltdc.Init.AccumulatedActiveH = 504;
-	hltdc.Init.TotalWidth = 886; // 865
+	hltdc.Init.TotalWidth = 896; // 865
 	hltdc.Init.TotalHeigh = 550; // 550
 	hltdc.Init.Backcolor.Blue = 0;
 	hltdc.Init.Backcolor.Green = 0;
@@ -26,8 +26,8 @@ void DISPLAY_Init()
 		Error_Handler();
 	}
 
-	pLayerCfg.WindowX0 = 0;
-	pLayerCfg.WindowX1 = 800;
+	pLayerCfg.WindowX0 = 30;
+	pLayerCfg.WindowX1 = 830;
 	pLayerCfg.WindowY0 = 0;
 	pLayerCfg.WindowY1 = 480;
 	pLayerCfg.PixelFormat = LTDC_PIXEL_FORMAT_L8;
