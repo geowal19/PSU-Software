@@ -29,74 +29,13 @@ LTDC_HandleTypeDef hltdc;
 /* LTDC init function */
 void MX_LTDC_Init(void)
 {
-	LTDC_LayerCfgTypeDef pLayerCfg = {0};
-	LTDC_LayerCfgTypeDef pLayerCfg1 = {0};
-
-	hltdc.Instance = LTDC;
-	hltdc.Init.HSPolarity = LTDC_HSPOLARITY_AL;
-	hltdc.Init.VSPolarity = LTDC_VSPOLARITY_AL;
-	hltdc.Init.DEPolarity = LTDC_DEPOLARITY_AH;
-	hltdc.Init.PCPolarity = LTDC_PCPOLARITY_IPC;
-	hltdc.Init.HorizontalSync = 4;
-	hltdc.Init.VerticalSync = 4;
-	hltdc.Init.AccumulatedHBP = 50;
-	hltdc.Init.AccumulatedVBP = 27;
-	hltdc.Init.AccumulatedActiveW = 850;
-	hltdc.Init.AccumulatedActiveH = 507;
-	hltdc.Init.TotalWidth = 870;
-	hltdc.Init.TotalHeigh = 529;
-	hltdc.Init.Backcolor.Blue = 0;
-	hltdc.Init.Backcolor.Green = 0;
-	hltdc.Init.Backcolor.Red = 0;
-	if (HAL_LTDC_Init(&hltdc) != HAL_OK)
-	{
-		Error_Handler();
-	}
-	pLayerCfg.WindowX0 = 0;
-	pLayerCfg.WindowX1 = 800;
-	pLayerCfg.WindowY0 = 0;
-	pLayerCfg.WindowY1 = 480;
-	pLayerCfg.PixelFormat = LTDC_PIXEL_FORMAT_ARGB8888;
-	pLayerCfg.Alpha = 255;
-	pLayerCfg.Alpha0 = 255;
-	pLayerCfg.BlendingFactor1 = LTDC_BLENDING_FACTOR1_CA;
-	pLayerCfg.BlendingFactor2 = LTDC_BLENDING_FACTOR2_CA;
-	pLayerCfg.FBStartAdress = 0;
-	pLayerCfg.ImageWidth = 800;
-	pLayerCfg.ImageHeight = 480;
-	pLayerCfg.Backcolor.Blue = 0;
-	pLayerCfg.Backcolor.Green = 0;
-	pLayerCfg.Backcolor.Red = 0;
-	if (HAL_LTDC_ConfigLayer(&hltdc, &pLayerCfg, 0) != HAL_OK)
-	{
-		Error_Handler();
-	}
-	pLayerCfg1.WindowX0 = 0;
-	pLayerCfg1.WindowX1 = 0;
-	pLayerCfg1.WindowY0 = 0;
-	pLayerCfg1.WindowY1 = 0;
-	pLayerCfg1.Alpha = 0;
-	pLayerCfg1.Alpha0 = 0;
-	pLayerCfg1.BlendingFactor1 = LTDC_BLENDING_FACTOR1_CA;
-	pLayerCfg1.BlendingFactor2 = LTDC_BLENDING_FACTOR2_CA;
-	pLayerCfg1.FBStartAdress = GFXMMU_VIRTUAL_BUFFER0_BASE;
-	pLayerCfg1.ImageWidth = 0;
-	pLayerCfg1.ImageHeight = 0;
-	pLayerCfg1.Backcolor.Blue = 0;
-	pLayerCfg1.Backcolor.Green = 0;
-	pLayerCfg1.Backcolor.Red = 0;
-	if (HAL_LTDC_ConfigLayer(&hltdc, &pLayerCfg1, 1) != HAL_OK)
-	{
-		Error_Handler();
-	}
-
 }
 
-void HAL_LTDC_MspInit(LTDC_HandleTypeDef* ltdcHandle)
+void HAL_LTDC_MspInit(LTDC_HandleTypeDef *ltdcHandle)
 {
 
 	GPIO_InitTypeDef GPIO_InitStruct = {0};
-	if(ltdcHandle->Instance == LTDC)
+	if (ltdcHandle->Instance == LTDC)
 	{
 		/* USER CODE BEGIN LTDC_MspInit 0 */
 
@@ -155,8 +94,7 @@ void HAL_LTDC_MspInit(LTDC_HandleTypeDef* ltdcHandle)
 		GPIO_InitStruct.Alternate = GPIO_AF14_LTDC;
 		HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);
 
-		GPIO_InitStruct.Pin = GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4
-		                      | GPIO_PIN_6 | GPIO_PIN_9 | GPIO_PIN_11;
+		GPIO_InitStruct.Pin = GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_6 | GPIO_PIN_9 | GPIO_PIN_11;
 		GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
 		GPIO_InitStruct.Pull = GPIO_NOPULL;
 		GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -225,10 +163,10 @@ void HAL_LTDC_MspInit(LTDC_HandleTypeDef* ltdcHandle)
 	}
 }
 
-void HAL_LTDC_MspDeInit(LTDC_HandleTypeDef* ltdcHandle)
+void HAL_LTDC_MspDeInit(LTDC_HandleTypeDef *ltdcHandle)
 {
 
-	if(ltdcHandle->Instance == LTDC)
+	if (ltdcHandle->Instance == LTDC)
 	{
 		/* USER CODE BEGIN LTDC_MspDeInit 0 */
 
@@ -270,12 +208,9 @@ void HAL_LTDC_MspDeInit(LTDC_HandleTypeDef* ltdcHandle)
 
 		HAL_GPIO_DeInit(GPIOF, GPIO_PIN_10);
 
-		HAL_GPIO_DeInit(GPIOA, GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4
-		                | GPIO_PIN_6 | GPIO_PIN_8 | GPIO_PIN_9 | GPIO_PIN_10
-		                | GPIO_PIN_11);
+		HAL_GPIO_DeInit(GPIOA, GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3 | GPIO_PIN_4 | GPIO_PIN_6 | GPIO_PIN_8 | GPIO_PIN_9 | GPIO_PIN_10 | GPIO_PIN_11);
 
-		HAL_GPIO_DeInit(GPIOB, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_10 | GPIO_PIN_11
-		                | GPIO_PIN_8 | GPIO_PIN_9);
+		HAL_GPIO_DeInit(GPIOB, GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_10 | GPIO_PIN_11 | GPIO_PIN_8 | GPIO_PIN_9);
 
 		HAL_GPIO_DeInit(GPIOG, GPIO_PIN_6 | GPIO_PIN_7 | GPIO_PIN_12 | GPIO_PIN_13);
 

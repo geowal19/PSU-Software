@@ -10,7 +10,8 @@ void GUI_Init()
 {
     //memcpy((uint8_t *)DISPLAY_GetBuffer(), (uint8_t *)background, 800 * 480);
 
-    memcpy(DISP_BUFFER, (uint8_t *)background, 800 * 480);
+    //memcpy(DISP_BUFFER, (uint8_t *)background, 800 * 480);
+    memset(DISP_BUFFER, 0, 800 * 480);
 }
 
 void GUI_UpdateDisplay(double output_voltage, double output_current, double read_voltage, double read_current, bool output_en, char *user_input)
