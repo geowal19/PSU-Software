@@ -1,7 +1,5 @@
 #include "display.h"
 
-#include "background.h"
-
 void DISPLAY_Init()
 {
 	// Init the drivers
@@ -32,12 +30,12 @@ void DISPLAY_Init()
 	pLayerCfg.WindowX1 = 800;
 	pLayerCfg.WindowY0 = 0;
 	pLayerCfg.WindowY1 = 480;
-	pLayerCfg.PixelFormat = LTDC_PIXEL_FORMAT_ARGB8888;
+	pLayerCfg.PixelFormat = LTDC_PIXEL_FORMAT_L8;
 	pLayerCfg.Alpha = 255;
 	pLayerCfg.Alpha0 = 255;
 	pLayerCfg.BlendingFactor1 = LTDC_BLENDING_FACTOR1_CA;
 	pLayerCfg.BlendingFactor2 = LTDC_BLENDING_FACTOR2_CA;
-	pLayerCfg.FBStartAdress = (uint32_t *)background; //SDRAM_ADDR;
+	pLayerCfg.FBStartAdress = DISP_BUFFER;
 	pLayerCfg.ImageWidth = 800;
 	pLayerCfg.ImageHeight = 480;
 	pLayerCfg.Backcolor.Blue = 0;

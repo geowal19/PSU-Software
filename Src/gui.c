@@ -1,12 +1,16 @@
 #include "gui.h"
 
 #include "font.h"
+#include "display.h"
+#include "background.h"
 
 const uint8_t *font_chars[] = {char_0, char_1, char_2, char_3, char_4, char_5, char_6, char_7, char_8, char_9, char_dp};
 const uint32_t font_char_widths[] = {67, 67, 67, 67, 67, 67, 67, 67, 67, 67, 27};
 void GUI_Init()
 {
-    //SDRAM_Write(0, (uint32_t *)background, 800 * 480);
+    //memcpy((uint8_t *)DISPLAY_GetBuffer(), (uint8_t *)background, 800 * 480);
+
+    memcpy(DISP_BUFFER, (uint8_t *)background, 800 * 480);
 }
 
 void GUI_UpdateDisplay(double output_voltage, double output_current, double read_voltage, double read_current, bool output_en, char *user_input)

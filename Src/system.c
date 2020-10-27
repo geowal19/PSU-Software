@@ -38,8 +38,6 @@ volatile uint32_t btn_flags = 0;
 volatile uint8_t display_brightness_var = 0;
 volatile bool display_refresh = true;
 
-#define LEN 100
-
 void System()
 {
 	SYS_Start();
