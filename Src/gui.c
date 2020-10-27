@@ -10,67 +10,59 @@ void GUI_Init()
 {
     //memcpy((uint8_t *)DISPLAY_GetBuffer(), (uint8_t *)background, 800 * 480);
 
-    //memcpy(DISP_BUFFER, (uint8_t *)background, 800 * 480);
-    memset(DISP_BUFFER, 0, 800 * 480);
+    memcpy((uint8_t *)DISP_BUFFER, (uint8_t *)background, 800 * 480);
+    //memset(DISP_BUFFER, 80, 800 * 480);
 }
 
 void GUI_UpdateDisplay(double output_voltage, double output_current, double read_voltage, double read_current, bool output_en, char *user_input)
 {
-    char str[10];
-    uint32_t offset = 0;
-
-    // Draw the output voltage
-    sprintf(str, "%f", output_voltage);
-    offset = 0;
-    for (uint8_t i = 0; i < strlen(str); i++)
-    {
-        GUI_DrawChar(GUI_OUTPUT_VLTS_LOC_X, GUI_OUTPUT_VLTS_LOC_Y + offset, str[i]);
-        offset += GUI_CHAR_SPACING + font_char_widths[str[i] - GUI_ASCII_OFFSET];
-    }
-
-    // Draw the output current
-    sprintf(str, "%f", output_current);
-    offset = 0;
-    for (uint8_t i = 0; i < strlen(str); i++)
-    {
-        GUI_DrawChar(GUI_OUTPUT_AMPS_LOC_X, GUI_OUTPUT_AMPS_LOC_Y + offset, str[i]);
-        offset += GUI_CHAR_SPACING + font_char_widths[str[i] - GUI_ASCII_OFFSET];
-    }
-
-    // Draw the read voltage
-    sprintf(str, "%f", read_voltage);
-    offset = 0;
-    for (uint8_t i = 0; i < strlen(str); i++)
-    {
-        GUI_DrawChar(GUI_READ_VLTS_LOC_X, GUI_READ_VLTS_LOC_Y + offset, str[i]);
-        offset += GUI_CHAR_SPACING + font_char_widths[str[i] - GUI_ASCII_OFFSET];
-    }
-
-    // Draw the read current
-    sprintf(str, "%f", read_current);
-    offset = 0;
-    for (uint8_t i = 0; i < strlen(str); i++)
-    {
-        GUI_DrawChar(GUI_READ_AMPS_LOC_X, GUI_READ_AMPS_LOC_Y + offset, str[i]);
-        offset += GUI_CHAR_SPACING + font_char_widths[str[i] - GUI_ASCII_OFFSET];
-    }
-
-    // Draw the output voltage
-    offset = 0;
-    for (uint8_t i = 0; i < strlen(str); i++)
-    {
-        GUI_DrawChar(GUI_USER_INPUT_LOC_X, GUI_USER_INPUT_LOC_Y + offset, user_input[i]);
-        offset += GUI_CHAR_SPACING + font_char_widths[user_input[i] - GUI_ASCII_OFFSET];
-    }
 }
 
 void GUI_DrawChar(uint32_t x, uint32_t y, char c)
 {
-    uint32_t disp_mem_loc = (y * 800) + x;
-    uint32_t width = font_char_widths[c - GUI_ASCII_OFFSET];
+    uint8_t *ptr = NULL;
+    uint32_t width = 0;
 
-    for (uint32_t i = 0; i < FONT_CHAR_HEIGHT; i++)
+    if (c == '.')
     {
-        SDRAM_Write(disp_mem_loc + (i * 800), (uint32_t *)(font_chars[c - GUI_ASCII_OFFSET]) + (i * width), width);
+        ptr = (uint8_t *)font_chars[10];
+        width = font_char_widths[10];
+    }
+
+    else
+    {
+        // Character is out of range
+        if ((c - GUI_ASCII_OFFSET) > 10)
+        {
+            return;
+        }
+
+        ptr = (uint8_t *)font_chars[c - GUI_ASCII_OFFSET];
+        width = font_char_widths[c - GUI_ASCII_OFFSET];
+    }
+
+    for (uint32_t i = 0; i < GUI_ASCII_HEIGHT; i++)
+    {
+        uint8_t *disp_ptr = (uint8_t *)(DISP_BUFFER + ((i + y) * GUI_SCREEN_WIDTH) + x);
+        memcpy((uint8_t *)disp_ptr, &ptr[width * i], width);
+    }
+}
+
+void GUI_DrawRectangle(uint32_t x0, uint32_t y0, uint32_t x1, uint32_t y1, uint8_t pix_val)
+{
+    uint32_t width = x1 - x0;
+    uint32_t height = y1 - y0;
+
+    // Are we in range?
+    if (width > (GUI_SCREEN_WIDTH - x0))
+        return;
+    if (height > (GUI_SCREEN_HEIGHT - y0))
+        return;
+
+    for (uint32_t i = y0; i < y1; i++)
+    {
+        uint8_t *ptr = (uint8_t *)(DISP_BUFFER + (i * GUI_SCREEN_WIDTH) + x0);
+
+        memset((uint8_t *)ptr, pix_val, width);
     }
 }

@@ -78,6 +78,8 @@ void SYS_Loop()
 			btn_poll_stamp = tick;
 
 			BTN_Poll();
+
+			display_refresh = true;
 		}
 		/*
 		// Update the analogue values
@@ -438,11 +440,15 @@ void SYS_ButtonHandler(uint32_t button_press)
 	case BTN_V_FLAG:
 		sys_var.output_voltage = (double)atof((char *)sys_var.user_input);
 		memset((char *)sys_var.user_input, 0, SYS_USER_INPUT_LEN);
+
+		GUI_DrawChar(200, 200, '0');
 		break;
 
 	case BTN_A_FLAG:
 		sys_var.output_current = (double)atof((char *)sys_var.user_input);
 		memset((char *)sys_var.user_input, 0, SYS_USER_INPUT_LEN);
+
+		GUI_DrawChar(200, 200, '1');
 		break;
 
 	case BTN_ONOFF_FLAG:
