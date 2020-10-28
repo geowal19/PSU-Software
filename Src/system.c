@@ -89,7 +89,7 @@ void SYS_Loop()
 			ana_poll_stamp = tick;
 
 			sys_var.read_voltage = ANA_GetOutputVoltage();
-			//sys_var.read_current = ANA_GetOutputCurrent();
+			sys_var.read_current = ANA_GetOutputCurrent();
 
 			display_refresh = true;
 		}
@@ -210,7 +210,7 @@ void SYS_CommandExecuter()
 		{
 			double voltage = atof((char *)command.params[0]);
 
-			if (voltage < SYS_MAX_VOLTAGE && voltage > SYS_MIN_VOLTAGE)
+			if (voltage <= SYS_MAX_VOLTAGE && voltage >= SYS_MIN_VOLTAGE)
 			{
 				sys_var.output_voltage = voltage;
 
@@ -241,7 +241,7 @@ void SYS_CommandExecuter()
 		{
 			double current = atof((char *)command.params[0]);
 
-			if (current < SYS_MAX_CURRENT && current > SYS_MIN_CURRENT)
+			if (current <= SYS_MAX_CURRENT && current >= SYS_MIN_CURRENT)
 			{
 				sys_var.output_current = current;
 
@@ -442,7 +442,7 @@ void SYS_ButtonHandler(uint32_t button_press)
 
 	case BTN_A_FLAG:
 		temp = (double)atof((char *)sys_var.user_input);
-		if (temp < SYS_MAX_VOLTAGE && temp > 0)
+		if (temp <= SYS_MAX_VOLTAGE && temp >= 0)
 		{
 			sys_var.output_voltage = temp;
 		}
@@ -451,7 +451,7 @@ void SYS_ButtonHandler(uint32_t button_press)
 
 	case BTN_V_FLAG:
 		temp = (double)atof((char *)sys_var.user_input);
-		if (temp < SYS_MAX_CURRENT && temp > 0)
+		if (temp <= SYS_MAX_CURRENT && temp >= 0)
 		{
 			sys_var.output_current = temp;
 		}

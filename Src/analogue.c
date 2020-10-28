@@ -1,7 +1,7 @@
 #include "analogue.h"
 
-volatile uint16_t ana_vlts_values[ANA_AVERAGING_LEN] = {0};
-volatile uint16_t ana_amps_values[ANA_AVERAGING_LEN] = {0};
+volatile int16_t ana_vlts_values[ANA_AVERAGING_LEN] = {0};
+volatile int16_t ana_amps_values[ANA_AVERAGING_LEN] = {0};
 
 volatile uint32_t ana_vlts_values_ptr = 0;
 volatile uint32_t ana_amps_values_ptr = 0;
@@ -57,8 +57,6 @@ double ANA_GetOutputVoltage()
 
     mean = mean / (double)ANA_AVERAGING_LEN;
 
-    mean = mean / (double)ANA_VLTS_ADC_CONV_FACTOR;
-
     return mean;
 }
 
@@ -72,8 +70,6 @@ double ANA_GetOutputCurrent()
     }
 
     mean = mean / (double)ANA_AVERAGING_LEN;
-
-    mean = mean / (double)ANA_AMPS_ADC_CONV_FACTOR;
 
     return mean;
 }
@@ -98,9 +94,8 @@ void ANA_TimerHandler()
     ADC_StartConversion(ana_conv_channel);
 }
 
-void ADC_CallBack(uint16_t value)
+void ADC_CallBack(int16_t value)
 {
-    /*
     if (ana_conv_channel == ADC_CHN_VLTS)
     {
         // Swap the channel
@@ -126,14 +121,4 @@ void ADC_CallBack(uint16_t value)
         if (ana_amps_values_ptr == ANA_AVERAGING_LEN)
             ana_amps_values_ptr = 0;
     }
-    */
-
-    ana_conv_channel = ADC_CHN_VLTS;
-
-    // Assign to the relevant averaging array
-    ana_vlts_values[ana_vlts_values_ptr++] = value;
-
-    // Deal with pointer overflow
-    if (ana_vlts_values_ptr == ANA_AVERAGING_LEN)
-        ana_vlts_values_ptr = 0;
 }

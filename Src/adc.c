@@ -1,7 +1,7 @@
 #include "adc.h"
 
-const uint8_t adc_vlts_reading_config[] = {0x4C, 0x81, 0x40, 0x10, 0x00};
-const uint8_t adc_amps_reading_config[] = {0x4C, 0x93, 0x40, 0x10, 0x00};
+const uint8_t adc_vlts_reading_config[] = {0x43, 0x81, 0x40, 0x00, 0x00};
+const uint8_t adc_amps_reading_config[] = {0x43, 0x93, 0x40, 0x00, 0x00};
 
 void ADC_SPI_Transceive(uint8_t *tx_data, uint16_t tx_len, uint8_t *rx_data, uint16_t rx_len)
 {
@@ -39,13 +39,13 @@ void ADC_StartConversion(uint8_t channel)
 	}
 }
 
-uint16_t ADC_ReadValue()
+int16_t ADC_ReadValue()
 {
 	int16_t result = 0;
 
 	ADC_SPI_Transceive((uint8_t[]){ADC_CMD_RDTA}, 1, (uint8_t *)&result, 2);
 
-	return (uint16_t)(result);
+	return result;
 }
 
 void ADC_Handler()

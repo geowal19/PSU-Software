@@ -9,12 +9,12 @@
 #include "dac.h"
 #include "maths.h"
 
-#define ANA_AVERAGING_LEN 10
+#define ANA_AVERAGING_LEN 1
 
-#define ANA_VLTS_ADC_CONV_FACTOR (3700.8)
-#define ANA_AMPS_ADC_CONV_FACTOR (37008)
+#define ANA_VLTS_ADC_CONV_FACTOR (1000)
+#define ANA_AMPS_ADC_CONV_FACTOR (1000)
 #define ANA_VLTS_DAC_CONV_FACTOR (6553.5)
-#define ANA_AMPS_DAC_CONV_FACTOR (65535)
+#define ANA_AMPS_DAC_CONV_FACTOR (52428)
 
 void ANA_Start();
 void ANA_Stop();
