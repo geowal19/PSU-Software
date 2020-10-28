@@ -47,10 +47,13 @@ void System()
 
 void SYS_Start()
 {
+	// Give the SMPSs time to settle
+	HAL_Delay(1000);
+
 	TERM_Start();
 
 	// Output
-	//ANA_Start();
+	ANA_Start();
 
 	// Display inits
 	SDRAM_Init();
@@ -78,21 +81,19 @@ void SYS_Loop()
 			btn_poll_stamp = tick;
 
 			BTN_Poll();
-
-			display_refresh = true;
 		}
-		/*
+
 		// Update the analogue values
 		if (tick > (ana_poll_stamp + SYS_ANA_POLL_TIME_MS))
 		{
 			ana_poll_stamp = tick;
 
 			sys_var.read_voltage = ANA_GetOutputVoltage();
-			sys_var.read_current = ANA_GetOutputCurrent();
+			//sys_var.read_current = ANA_GetOutputCurrent();
 
 			display_refresh = true;
 		}
-	*/
+
 		// Update the display
 		if (display_refresh)
 		{
@@ -104,7 +105,7 @@ void SYS_Loop()
 
 			DISPLAY_Refresh();
 		}
-		/*
+
 		// Update the output voltage
 		if (sys_var.output_voltage != ana_vlts_current_val)
 		{
@@ -134,7 +135,7 @@ void SYS_Loop()
 
 			display_refresh = true;
 		}
-*/
+
 		// If there's something has come in on the uart
 		if (term_string[0])
 		{

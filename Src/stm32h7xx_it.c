@@ -219,10 +219,7 @@ void EXTI1_IRQHandler(void)
 	HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_1);
 	/* USER CODE BEGIN EXTI1_IRQn 1 */
 
-	if(HAL_GPIO_ReadPin(ADC_DRDY_GPIO_Port, ADC_DRDY_Pin) == 0)
-	{
-		ADC_Handler();
-	}
+	ADC_Handler();
 
 	/* USER CODE END EXTI1_IRQn 1 */
 }

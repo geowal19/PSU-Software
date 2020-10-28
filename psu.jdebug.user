@@ -1,29 +1,29 @@
 
 
 Breakpoint=4175611857: 45: 0, State=BP_STATE_DISABLED
-Breakpoint=4175611857: 152: 4, State=BP_STATE_DISABLED
+Breakpoint=4175611857: 154: 4, State=BP_STATE_DISABLED
 Breakpoint=301612880: 95: 0, State=BP_STATE_ON
 OpenDocument="main.c", FilePath="/Users/georgewaller/Documents/PSU-Software/Src/main.c", Line=47
 OpenDocument="display.c", FilePath="/Users/georgewaller/Documents/PSU-Software/Src/display.c", Line=0
-OpenDocument="gui.c", FilePath="/Users/georgewaller/Documents/PSU-Software/Src/gui.c", Line=0
+OpenDocument="gui.c", FilePath="/Users/georgewaller/Documents/PSU-Software/Src/gui.c", Line=55
 OpenDocument="sdram.c", FilePath="/Users/georgewaller/Documents/PSU-Software/Src/sdram.c", Line=0
 OpenDocument="stm32h7xx_it.c", FilePath="/Users/georgewaller/Documents/PSU-Software/Src/stm32h7xx_it.c", Line=68
 OpenDocument="startup_stm32h743xx.s", FilePath="/Users/georgewaller/Documents/PSU-Software/startup_stm32h743xx.s", Line=37
 OpenDocument="terminal.c", FilePath="/Users/georgewaller/Documents/PSU-Software/Src/terminal.c", Line=0
 OpenDocument="uart_printf.c", FilePath="/Users/georgewaller/Documents/PSU-Software/Src/uart_printf.c", Line=0
-OpenDocument="system.c", FilePath="/Users/georgewaller/Documents/PSU-Software/Src/system.c", Line=20
+OpenDocument="system.c", FilePath="/Users/georgewaller/Documents/PSU-Software/Src/system.c", Line=181
 OpenToolbar="Debug", Floating=0, x=0, y=0
-OpenWindow="Call Stack", DockArea=LEFT, x=0, y=0, w=762, h=223, FilterBarShown=0, ToolBarShown=0
-OpenWindow="Source Files", DockArea=LEFT, x=0, y=2, w=762, h=502, FilterBarShown=1, ToolBarShown=0
+OpenWindow="Call Stack", DockArea=LEFT, x=0, y=0, w=762, h=233, FilterBarShown=0, ToolBarShown=0
+OpenWindow="Source Files", DockArea=LEFT, x=0, y=2, w=762, h=490, FilterBarShown=1, ToolBarShown=0
 OpenWindow="Source", x=0, y=0, w=0, h=0, FilterBarShown=0, ToolBarShown=0, ExecCountersShown=0
-OpenWindow="Global Data", DockArea=LEFT, x=0, y=1, w=762, h=536, FilterBarShown=1, ToolBarShown=0
-OpenWindow="Local Data", DockArea=LEFT, x=0, y=1, w=762, h=536, FilterBarShown=0, ToolBarShown=0
-OpenWindow="Watched Data", DockArea=LEFT, x=0, y=1, w=762, h=536, FilterBarShown=0, ToolBarShown=0
-OpenWindow="Console", DockArea=LEFT, x=0, y=2, w=762, h=502, FilterBarShown=0, ToolBarShown=0
-TableHeader="Source Files", SortCol="File", SortOrder="ASCENDING", VisibleCols=["File";"Status";"Size";"#Insts";"Path"], ColWidths=[180;66;54;66;632]
-TableHeader="Watched Data", SortCol="Expression", SortOrder="ASCENDING", VisibleCols=["Expression";"Value";"Location";"Size";"Refresh";"Type";"Scope"], ColWidths=[251;227;94;54;74;260;29]
+OpenWindow="Global Data", DockArea=LEFT, x=0, y=1, w=762, h=538, FilterBarShown=1, ToolBarShown=0
+OpenWindow="Local Data", DockArea=LEFT, x=0, y=1, w=762, h=538, FilterBarShown=0, ToolBarShown=0
+OpenWindow="Watched Data", DockArea=LEFT, x=0, y=1, w=762, h=538, FilterBarShown=0, ToolBarShown=0
+OpenWindow="Console", DockArea=LEFT, x=0, y=2, w=762, h=490, FilterBarShown=0, ToolBarShown=0
 TableHeader="Local Data", SortCol="Value", SortOrder="DESCENDING", VisibleCols=["Name";"Value";"Location";"Size";"Type";"Scope"], ColWidths=[175;274;105;54;57;97]
 TableHeader="Global Data", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Value";"Location";"Size";"Type";"Scope"], ColWidths=[196;221;62;39;43;278]
+TableHeader="Source Files", SortCol="File", SortOrder="ASCENDING", VisibleCols=["File";"Status";"Size";"#Insts";"Path"], ColWidths=[180;66;54;66;632]
+TableHeader="Watched Data", SortCol="Expression", SortOrder="ASCENDING", VisibleCols=["Expression";"Value";"Location";"Size";"Refresh";"Type";"Scope"], ColWidths=[251;227;94;54;74;260;29]
 TableHeader="Call Stack", SortCol="Function", SortOrder="ASCENDING", VisibleCols=["Function";"Source"], ColWidths=[276;486]
 TableHeader="Power Sampling", SortCol="Index", SortOrder="ASCENDING", VisibleCols=["Index";"Time";"Ch 0"], ColWidths=[100;100;100]
 TableHeader="RegisterSelectionDialog", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Auto";"Name";"Address";"Description"], ColWidths=[27;27;27;27]
