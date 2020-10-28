@@ -525,7 +525,15 @@ void SYS_ButtonHandler(uint32_t button_press)
 		break;
 
 	case BTN_S_ONOFF_FLAG:
-		sys_var.output_en = 1;
+		if (sys_var.output_en)
+		{
+			sys_var.output_en = 0;
+		}
+
+		else
+		{
+			sys_var.output_en = 1;
+		}
 		break;
 	}
 }
