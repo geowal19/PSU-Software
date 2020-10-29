@@ -57,6 +57,9 @@ double ANA_GetOutputVoltage()
 
     mean = mean / (double)ANA_AVERAGING_LEN;
 
+    mean = mean / (double)ANA_VLTS_ADC_CONV_FACTOR;
+    mean = mean - (double)ANA_VLTS_ADC_CONV_OFFSET;
+
     return mean;
 }
 
@@ -70,6 +73,9 @@ double ANA_GetOutputCurrent()
     }
 
     mean = mean / (double)ANA_AVERAGING_LEN;
+
+    mean = mean / (double)ANA_AMPS_ADC_CONV_FACTOR;
+    mean = mean - (double)ANA_AMPS_ADC_CONV_OFFSET;
 
     return mean;
 }

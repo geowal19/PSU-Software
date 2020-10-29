@@ -3,17 +3,16 @@
 
 #include "main.h"
 
-#define SYS_BTN_POLL_TIME_MS        10      // Button poll rate
-#define SYS_ANA_POLL_TIME_MS        100     // Analogue output values rate
-#define SYS_DSP_POLL_TIME_MS        100     // Display refresh rate
+#define SYS_BTN_POLL_TIME_MS 10  // Button poll rate
+#define SYS_ANA_POLL_TIME_MS 100 // Analogue output values rate
+#define SYS_DSP_POLL_TIME_MS 100 // Display refresh rate
 
-#define SYS_MAX_VOLTAGE             (10.000)
-#define SYS_MIN_VOLTAGE             (00.000)
-#define SYS_MAX_CURRENT             (1.000)
-#define SYS_MIN_CURRENT             (0.000)
+#define SYS_MAX_VOLTAGE (8.000)
+#define SYS_MIN_VOLTAGE (00.000)
+#define SYS_MAX_CURRENT (1.000)
+#define SYS_MIN_CURRENT (0.000)
 
-#define SYS_USER_INPUT_LEN          10
-
+#define SYS_USER_INPUT_LEN 10
 
 // The system variable
 struct SysVarTag;

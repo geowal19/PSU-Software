@@ -15,7 +15,7 @@ void ADC_SPI_Transceive(uint8_t *tx_data, uint16_t tx_len, uint8_t *rx_data, uin
 		asm("NOP");
 	}
 
-	memcpy(rx_data, rx, rx_len);
+	memcpy(rx_data, rx + tx_len, rx_len);
 }
 
 void ADC_StartConversion(uint8_t channel)
@@ -41,11 +41,11 @@ void ADC_StartConversion(uint8_t channel)
 
 int16_t ADC_ReadValue()
 {
-	int16_t result = 0;
+	uint8_t data[2] = {0};
 
-	ADC_SPI_Transceive((uint8_t[]){ADC_CMD_RDTA}, 1, (uint8_t *)&result, 2);
+	ADC_SPI_Transceive((uint8_t[]){ADC_CMD_RDTA}, 1, data, 2);
 
-	return result;
+	return (int16_t)((data[0] << 8) + (data[1]));
 }
 
 void ADC_Handler()
