@@ -9,7 +9,7 @@
 #include "dac.h"
 #include "maths.h"
 
-#define ANA_AVERAGING_LEN 1
+#define ANA_AVERAGING_LEN 5
 
 #define ANA_VLTS_ADC_CONV_FACTOR (4000)
 #define ANA_VLTS_ADC_CONV_OFFSET (0.002)
