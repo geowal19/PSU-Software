@@ -91,6 +91,11 @@ void SYS_Loop()
 			sys_var.read_voltage = ANA_GetOutputVoltage();
 			sys_var.read_current = ANA_GetOutputCurrent();
 
+			if (sys_var.stream_mode)
+			{
+				TERM_SendStream(HAL_GetTick(), sys_var.read_voltage, sys_var.read_current);
+			}
+
 			display_refresh = true;
 		}
 
@@ -341,6 +346,35 @@ void SYS_CommandExecuter()
 			else
 			{
 				sys_var.display_brightness = brightness;
+			}
+
+			TERM_Send("OK.\n");
+		}
+
+		else
+		{
+			TERM_Send("ERROR. Not enough parameters.\n");
+		}
+	}
+
+	/*
+
+	Set the display brightness.
+
+	*/
+	if (command.cmd == CMD_SET_STREAM)
+	{
+		// Number of params check
+		if (command.n_params < 1)
+		{
+			if (strstr((const char *)command.params[0], "true"))
+			{
+				sys_var.stream_mode = true;
+			}
+
+			else
+			{
+				sys_var.stream_mode = false;
 			}
 
 			TERM_Send("OK.\n");

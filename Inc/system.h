@@ -25,6 +25,7 @@ typedef struct SysVarTag
     bool output_en;
     char user_input[SYS_USER_INPUT_LEN];
     uint8_t display_brightness;
+    bool stream_mode;
 } SysVar;
 
 // Core functions
