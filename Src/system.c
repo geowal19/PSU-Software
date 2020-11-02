@@ -91,6 +91,11 @@ void SYS_Loop()
 			sys_var.read_voltage = ANA_GetOutputVoltage();
 			sys_var.read_current = ANA_GetOutputCurrent();
 
+			if (sys_var.read_voltage < 0)
+				sys_var.read_voltage = 0;
+			if (sys_var.read_current < 0)
+				sys_var.read_current = 0;
+
 			if (sys_var.stream_mode)
 			{
 				TERM_SendStream(HAL_GetTick(), sys_var.read_voltage, sys_var.read_current);
@@ -365,7 +370,7 @@ void SYS_CommandExecuter()
 	if (command.cmd == CMD_SET_STREAM)
 	{
 		// Number of params check
-		if (command.n_params < 1)
+		if (command.n_params >= 1)
 		{
 			if (strstr((const char *)command.params[0], "true"))
 			{

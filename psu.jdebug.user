@@ -1,26 +1,31 @@
 
 
-Breakpoint=4175611857: 155: 4, State=BP_STATE_DISABLED
-Breakpoint=301612880: 95: 0, State=BP_STATE_ON
+Breakpoint=4175611857: 156: 4, State=BP_STATE_DISABLED
+Breakpoint=4175611857: 370: 2, State=BP_STATE_DISABLED
+Breakpoint=301612880: 95: 0, State=BP_STATE_DISABLED
 Breakpoint=412188820: 46: 0, State=BP_STATE_DISABLED
-Breakpoint=415638772: 18: 0, State=BP_STATE_ON
+Breakpoint=415638772: 18: 0, State=BP_STATE_DISABLED
 Breakpoint=415638772: 22: 0, State=BP_STATE_DISABLED
-Breakpoint=415638772: 28: 0, State=BP_STATE_ON
+Breakpoint=415638772: 28: 0, State=BP_STATE_DISABLED
 Breakpoint=415638772: 34: 1, State=BP_STATE_DISABLED
-OpenDocument="main.c", FilePath="/Users/georgewaller/Documents/PSU-Software/Src/main.c", Line=0
+OpenDocument="uart_printf.c", FilePath="/Users/georgewaller/Documents/PSU-Software/Src/uart_printf.c", Line=0
+OpenDocument="commands.c", FilePath="/Users/georgewaller/Documents/PSU-Software/Src/commands.c", Line=0
+OpenDocument="system.c", FilePath="/Users/georgewaller/Documents/PSU-Software/Src/system.c", Line=343
+OpenDocument="startup_stm32h743xx.s", FilePath="/Users/georgewaller/Documents/PSU-Software/startup_stm32h743xx.s", Line=37
+OpenDocument="main.c", FilePath="/Users/georgewaller/Documents/PSU-Software/Src/main.c", Line=47
 OpenDocument="stm32h7xx_hal_spi.c", FilePath="/Users/georgewaller/Documents/PSU-Software/Drivers/STM32H7xx_HAL_Driver/Src/stm32h7xx_hal_spi.c", Line=1360
 OpenToolbar="Debug", Floating=0, x=0, y=0
-OpenWindow="Call Stack", DockArea=LEFT, x=0, y=0, w=762, h=279, FilterBarShown=0, ToolBarShown=0
-OpenWindow="Source Files", DockArea=LEFT, x=0, y=2, w=762, h=431, FilterBarShown=1, ToolBarShown=0
+OpenWindow="Call Stack", DockArea=LEFT, x=0, y=0, w=762, h=288, FilterBarShown=0, ToolBarShown=0
+OpenWindow="Source Files", DockArea=LEFT, x=0, y=2, w=762, h=420, FilterBarShown=1, ToolBarShown=0
 OpenWindow="Source", x=0, y=0, w=0, h=0, FilterBarShown=0, ToolBarShown=0, ExecCountersShown=0
-OpenWindow="Global Data", DockArea=LEFT, x=0, y=1, w=762, h=551, FilterBarShown=1, ToolBarShown=0
-OpenWindow="Local Data", DockArea=LEFT, x=0, y=1, w=762, h=551, FilterBarShown=0, ToolBarShown=0
-OpenWindow="Watched Data", DockArea=LEFT, x=0, y=1, w=762, h=551, FilterBarShown=0, ToolBarShown=0
-OpenWindow="Console", DockArea=LEFT, x=0, y=2, w=762, h=431, FilterBarShown=0, ToolBarShown=0
-TableHeader="Source Files", SortCol="File", SortOrder="ASCENDING", VisibleCols=["File";"Status";"Size";"#Insts";"Path"], ColWidths=[180;66;54;66;632]
-TableHeader="Watched Data", SortCol="Expression", SortOrder="ASCENDING", VisibleCols=["Expression";"Value";"Location";"Size";"Refresh";"Type";"Scope"], ColWidths=[251;227;94;54;74;260;29]
+OpenWindow="Global Data", DockArea=LEFT, x=0, y=1, w=762, h=553, FilterBarShown=1, ToolBarShown=0
+OpenWindow="Local Data", DockArea=LEFT, x=0, y=1, w=762, h=553, FilterBarShown=0, ToolBarShown=0
+OpenWindow="Watched Data", DockArea=LEFT, x=0, y=1, w=762, h=553, FilterBarShown=0, ToolBarShown=0
+OpenWindow="Console", DockArea=LEFT, x=0, y=2, w=762, h=420, FilterBarShown=0, ToolBarShown=0
 TableHeader="Local Data", SortCol="Value", SortOrder="DESCENDING", VisibleCols=["Name";"Value";"Location";"Size";"Type";"Scope"], ColWidths=[175;274;105;54;57;97]
 TableHeader="Global Data", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Name";"Value";"Location";"Size";"Type";"Scope"], ColWidths=[196;221;62;39;43;278]
+TableHeader="Source Files", SortCol="File", SortOrder="ASCENDING", VisibleCols=["File";"Status";"Size";"#Insts";"Path"], ColWidths=[180;66;54;66;632]
+TableHeader="Watched Data", SortCol="Expression", SortOrder="ASCENDING", VisibleCols=["Expression";"Value";"Location";"Size";"Refresh";"Type";"Scope"], ColWidths=[251;227;94;54;74;260;164]
 TableHeader="Call Stack", SortCol="Function", SortOrder="ASCENDING", VisibleCols=["Function";"Source"], ColWidths=[276;486]
 TableHeader="Power Sampling", SortCol="Index", SortOrder="ASCENDING", VisibleCols=["Index";"Time";"Ch 0"], ColWidths=[100;100;100]
 TableHeader="RegisterSelectionDialog", SortCol="Name", SortOrder="ASCENDING", VisibleCols=["Auto";"Name";"Address";"Description"], ColWidths=[27;27;27;27]
@@ -29,3 +34,4 @@ WatchedExpression="rx[1]"
 WatchedExpression="rx[2]"
 WatchedExpression="rx_data[0]"
 WatchedExpression="rx_data[1]"
+WatchedExpression="command"

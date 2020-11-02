@@ -29,8 +29,8 @@ void TERM_Send(char *str)
 void TERM_SendStream(uint32_t tick, double volts, double amps)
 {
 	char str[100] = {0};
-	sprintf(str, "%lu,%f.3,%f.3\n", tick, volts, amps);
-	HAL_UART_Transmit_IT(&TERM_UART_PERPH, (uint8_t *)str, (uint16_t)strlen(str));
+	sprintf(str, "%lu,%f,%f\n", tick, volts, amps);
+	HAL_UART_Transmit(&TERM_UART_PERPH, (uint8_t *)str, (uint16_t)strlen(str), 10);
 }
 
 void TERM_Log(char *str)
