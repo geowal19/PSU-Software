@@ -217,6 +217,12 @@ clean:
 	-rm -fR $(BUILD_DIR)
 
 #######################################
+# program
+#######################################
+program:
+	python program.py -f Build/psu.hex -d psu
+
+#######################################
 # dependencies
 #######################################
 -include $(wildcard $(BUILD_DIR)/*.d)
