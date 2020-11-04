@@ -216,7 +216,7 @@ void SYS_CommandExecuter()
 	if (command.cmd == CMD_SET_VLTS)
 	{
 		// Number of params check
-		if (command.n_params)
+		if (command.n_params > 0)
 		{
 			double voltage = atof((char *)command.params[0]);
 
@@ -247,7 +247,7 @@ void SYS_CommandExecuter()
 	if (command.cmd == CMD_SET_AMPS)
 	{
 		// Number of params check
-		if (command.n_params)
+		if (command.n_params > 0)
 		{
 			double current = atof((char *)command.params[0]);
 
@@ -308,7 +308,7 @@ void SYS_CommandExecuter()
 	if (command.cmd == CMD_SET_OUT_STATE)
 	{
 		// Number of params check
-		if (command.n_params < 1)
+		if (command.n_params > 0)
 		{
 			uint8_t state = atoi((char *)command.params[0]);
 
@@ -339,7 +339,7 @@ void SYS_CommandExecuter()
 	if (command.cmd == CMD_SET_BRIGHTNESS)
 	{
 		// Number of params check
-		if (command.n_params < 1)
+		if (command.n_params > 0)
 		{
 			uint8_t brightness = atoi((char *)command.params[0]);
 
@@ -370,7 +370,7 @@ void SYS_CommandExecuter()
 	if (command.cmd == CMD_SET_STREAM)
 	{
 		// Number of params check
-		if (command.n_params >= 1)
+		if (command.n_params > 0)
 		{
 			if (strstr((const char *)command.params[0], "true"))
 			{

@@ -1,0 +1,4 @@
+r
+loadfile Build/psu.hex
+r
+q

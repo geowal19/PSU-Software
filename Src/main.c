@@ -98,6 +98,7 @@ int main(void)
 	MX_TIM7_Init();
 	MX_TIM13_Init();
 	MX_TIM14_Init();
+	MX_DMA_Init();
 	MX_USART1_UART_Init();
 	MX_TIM2_Init();
 	MX_TIM16_Init();
