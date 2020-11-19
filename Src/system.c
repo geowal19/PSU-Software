@@ -220,10 +220,8 @@ void SYS_CommandExecuter()
 		{
 			double voltage = atof((char *)command.params[0]);
 
-			if (voltage <= SYS_MAX_VOLTAGE && voltage >= SYS_MIN_VOLTAGE)
+			if (SYS_ChangeVoltage(voltage))
 			{
-				sys_var.output_voltage = voltage;
-
 				TERM_Send("OK.\n");
 			}
 
@@ -251,10 +249,8 @@ void SYS_CommandExecuter()
 		{
 			double current = atof((char *)command.params[0]);
 
-			if (current <= SYS_MAX_CURRENT && current >= SYS_MIN_CURRENT)
+			if (SYS_ChangeCurrent(current))
 			{
-				sys_var.output_current = current;
-
 				TERM_Send("OK.\n");
 			}
 
@@ -481,19 +477,13 @@ void SYS_ButtonHandler(uint32_t button_press)
 
 	case BTN_A_FLAG:
 		temp = (double)atof((char *)sys_var.user_input);
-		if (temp <= SYS_MAX_VOLTAGE && temp >= 0)
-		{
-			sys_var.output_voltage = temp;
-		}
+		SYS_ChangeVoltage(temp);
 		memset((char *)sys_var.user_input, 0, SYS_USER_INPUT_LEN);
 		break;
 
 	case BTN_V_FLAG:
 		temp = (double)atof((char *)sys_var.user_input);
-		if (temp <= SYS_MAX_CURRENT && temp >= 0)
-		{
-			sys_var.output_current = temp;
-		}
+		SYS_ChangeCurrent(temp);
 		memset((char *)sys_var.user_input, 0, SYS_USER_INPUT_LEN);
 		break;
 
@@ -519,10 +509,18 @@ void SYS_ButtonHandler(uint32_t button_press)
 
 	case BTN_S_2_FLAG:
 
+		if (!SYS_ChangeVoltage(sys_var.output_voltage - 0.1))
+		{
+			SYS_ChangeVoltage(SYS_MIN_VOLTAGE);
+		}
+
 		break;
 
 	case BTN_S_3_FLAG:
-
+		if (!SYS_ChangeCurrent(sys_var.output_current - 0.1))
+		{
+			SYS_ChangeCurrent(SYS_MIN_CURRENT);
+		}
 		break;
 
 	case BTN_S_4_FLAG:
@@ -546,11 +544,17 @@ void SYS_ButtonHandler(uint32_t button_press)
 		break;
 
 	case BTN_S_8_FLAG:
-
+		if (!SYS_ChangeVoltage(sys_var.output_voltage + 0.1))
+		{
+			SYS_ChangeVoltage(SYS_MAX_VOLTAGE);
+		}
 		break;
 
 	case BTN_S_9_FLAG:
-
+		if (!SYS_ChangeCurrent(sys_var.output_current + 0.1))
+		{
+			SYS_ChangeCurrent(SYS_MAX_CURRENT);
+		}
 		break;
 
 	case BTN_S_CLR_FLAG:
@@ -563,11 +567,11 @@ void SYS_ButtonHandler(uint32_t button_press)
 		break;
 
 	case BTN_S_A_FLAG:
-		sys_var.output_voltage = SYS_MAX_VOLTAGE;
+		SYS_ChangeVoltage(SYS_MAX_VOLTAGE);
 		break;
 
 	case BTN_S_V_FLAG:
-		sys_var.output_current = SYS_MAX_CURRENT;
+		SYS_ChangeCurrent(SYS_MAX_CURRENT);
 		break;
 
 	case BTN_S_ONOFF_FLAG:
@@ -582,6 +586,28 @@ void SYS_ButtonHandler(uint32_t button_press)
 		}
 		break;
 	}
+}
+
+bool SYS_ChangeVoltage(double abs)
+{
+	if (abs <= SYS_MAX_VOLTAGE && abs >= SYS_MIN_VOLTAGE)
+	{
+		sys_var.output_voltage = abs;
+		return true;
+	}
+
+	return false;
+}
+
+bool SYS_ChangeCurrent(double abs)
+{
+	if (abs <= SYS_MAX_CURRENT && abs >= SYS_MIN_CURRENT)
+	{
+		sys_var.output_current = abs;
+		return true;
+	}
+
+	return false;
 }
 
 void BTN_CallBack(uint32_t button_flags)
