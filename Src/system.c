@@ -506,9 +506,14 @@ void SYS_ButtonHandler(uint32_t button_press)
 		break;
 
 	case BTN_S_1_FLAG:
-		if (sys_var.display_brightness != 0)
+		if ((sys_var.display_brightness - 10) > 0)
 		{
-			sys_var.display_brightness--;
+			sys_var.display_brightness -= 10;
+		}
+
+		else
+		{
+			sys_var.display_brightness = 0;
 		}
 		break;
 
@@ -533,9 +538,10 @@ void SYS_ButtonHandler(uint32_t button_press)
 		break;
 
 	case BTN_S_7_FLAG:
-		if (sys_var.display_brightness < 100)
+		sys_var.display_brightness += 10;
+		if (sys_var.display_brightness > 100)
 		{
-			sys_var.display_brightness++;
+			sys_var.display_brightness = 100;
 		}
 		break;
 
@@ -548,7 +554,8 @@ void SYS_ButtonHandler(uint32_t button_press)
 		break;
 
 	case BTN_S_CLR_FLAG:
-		sys_var.user_input[strlen((char *)sys_var.user_input)] = 0;
+		sys_var.user_input[strlen((char *)sys_var.user_input) - 1] = 0;
+		display_refresh = true;
 		break;
 
 	case BTN_S_DP_FLAG:
